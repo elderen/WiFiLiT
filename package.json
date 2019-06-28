@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "react-native run-ios",
     "test": "jest"
   },
   "dependencies": {
     "react": "16.8.3",
-    "react-native": "0.59.9"
+    "react-native": "0.59.9",
+    "react-native-network-info": "^5.0.1",
+    "rn-prompt": "^1.0.4",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.5",
