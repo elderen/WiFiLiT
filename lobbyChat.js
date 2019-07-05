@@ -96,7 +96,7 @@ export default class LobbyChat extends React.Component {
             style={styles.textBox}
             multiline={false}
             value={this.state.message}
-            placeholder={`Say something ${this.props.name}`}
+            placeholder={`Say something LIT ${this.props.name}!`}
             placeholderTextColor="lightgray"
             allowFontScaling={true}
             clearTextOnFocus={true}
