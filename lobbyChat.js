@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import { YellowBox, StyleSheet, Text, TextInput, View, ScrollView, KeyboardAvoidingView } from 'react-native';
 import io from 'socket.io-client/dist/socket.io';
 import { NetworkInfo } from "react-native-network-info";
+import NetInfo from "@react-native-community/netinfo";
 
 console.ignoredYellowBox = ['Remote debugger'];
 YellowBox.ignoreWarnings([
@@ -16,12 +17,19 @@ export default class LobbyChat extends React.Component {
     sock: 'no socket connection',
     logs: [],
     ip: 'N/A',
-    ipv4:'na'
+    ss:'No SSID',
+    bss:'No BSSID',
+    bc:'No Broadcast',
+    sn:'No subnet',
+    wifiType: 'type',
+    wifiBool: 'bool'
   }
   constructor(props) {
     super(props)
     this.onSubmitEdit = this.onSubmitEdit.bind(this)
-    socket = io("https://wich.herokuapp.com/");
+    // socket = io("https://wich.herokuapp.com/");
+    socket = io('http://ec2-3-93-76-230.compute-1.amazonaws.com')
+    // socket = io('http://localhost:3000')
     this.getIP = this.getIP.bind(this);
   }
 
@@ -30,13 +38,28 @@ export default class LobbyChat extends React.Component {
     this.getIP()
   }
   
-  //
   async getIP() {
     const ipAddress = await NetworkInfo.getIPAddress();
-    const ipv4Address = await NetworkInfo.getIPV4Address();
+    const ssid = await NetworkInfo.getSSID();
+    const bssid = await NetworkInfo.getBSSID();
+    const broadcast = await NetworkInfo.getBroadcast();
+    const subnet = await NetworkInfo.getSubnet();
+
+    NetInfo.fetch().then(state => {
+      let type = state.wifiType
+      let bool = state.wifiBool
+      this.setState({
+        wifiType: type,
+        wifiBool: bool
+      })
+    });
+
     this.setState({
-      ip: ipAddress, 
-      ipv4: ipv4Address
+      ip: ipAddress,
+      ss: ssid,
+      bss: bssid,
+      bc: broadcast,
+      sn: subnet
     })
   }
 
@@ -69,7 +92,7 @@ export default class LobbyChat extends React.Component {
               top: 0,
               margin: 0,
               padding: 0,
-            }}> {this.state.sock} | {this.state.ip} | {this.state.ipv4} </Text>
+            }}> {this.state.sock} | {this.state.ss} | {this.state.bss}| {this.state.wifiBool}| {this.state.wifiType} | {this.state.bc} | {this.state.sn} </Text>
           </View>
           <View style={{ flex: 16 }}>
             <ScrollView

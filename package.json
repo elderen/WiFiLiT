@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "start": "react-native run-ios",
+    "build": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios",
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/netinfo": "^4.0.0",
     "react": "16.8.3",
     "react-native": "0.59.9",
     "react-native-network-info": "^5.0.1",
