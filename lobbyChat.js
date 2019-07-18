@@ -1,5 +1,5 @@
 window.navigator.userAgent = 'react-native';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { YellowBox, StyleSheet, Text, TextInput, View, ScrollView, KeyboardAvoidingView } from 'react-native';
 import io from 'socket.io-client/dist/socket.io';
 import { NetworkInfo } from "react-native-network-info";
@@ -17,49 +17,59 @@ export default class LobbyChat extends React.Component {
     sock: 'no socket connection',
     logs: [],
     ip: 'N/A',
-    ss:'No SSID',
-    bss:'No BSSID',
-    bc:'No Broadcast',
-    sn:'No subnet',
-    wifiType: 'type',
-    wifiBool: 'bool'
+    ss: 'No SSID',
+    bc: 'No Broadcast',
+    wifiBool: 'false',
+    console: 0
   }
   constructor(props) {
     super(props)
+    // Function Binds
     this.onSubmitEdit = this.onSubmitEdit.bind(this)
+    this.getNetworkInfo = this.getNetworkInfo.bind(this);
+
+    // Different Sockets
     // socket = io("https://wich.herokuapp.com/");
-    socket = io('http://ec2-3-93-76-230.compute-1.amazonaws.com')
-    // socket = io('http://localhost:3000')
-    this.getIP = this.getIP.bind(this);
+    // socket = io('http://ec2-3-93-76-230.compute-1.amazonaws.com')
+    socket = io('http://localhost:3000')
   }
 
   componentDidMount() {
-    socket.on('update', (msg) => { this.setState({ sock: 'Websocket Connected', logs: msg }) })
-    this.getIP()
+    NetInfo.isConnected.addEventListener(
+      "connectionChange",
+      (hasInternetConnection) => {
+        if (hasInternetConnection === true) {
+          this.getNetworkInfo()
+          this.setState({
+            wifiBool: 'WiFi Connected'
+          })
+          socket.on('update', (msg) => { this.setState({ sock: 'Websocket Connected', logs: msg }) })
+        } else if (hasInternetConnection === false) {
+          this.setState({
+            wifiBool: 'No WiFi'
+          })
+        }
+      }
+    );
   }
-  
-  async getIP() {
+
+  async getNetworkInfo() {
     const ipAddress = await NetworkInfo.getIPAddress();
     const ssid = await NetworkInfo.getSSID();
-    const bssid = await NetworkInfo.getBSSID();
     const broadcast = await NetworkInfo.getBroadcast();
-    const subnet = await NetworkInfo.getSubnet();
 
-    NetInfo.fetch().then(state => {
-      let type = state.wifiType
-      let bool = state.wifiBool
-      this.setState({
-        wifiType: type,
-        wifiBool: bool
-      })
-    });
-
+    socket.emit('ssid', ssid, () => {
+      socket.on('update', (msg) => { this.setState({ sock: 'Websocket Connected', logs: msg}, ()=>{
+        let counter = this.state.console + 1
+        this.setState({
+          console: counter
+        })
+      }) })
+    })
     this.setState({
       ip: ipAddress,
       ss: ssid,
-      bss: bssid,
-      bc: broadcast,
-      sn: subnet
+      bc: broadcast
     })
   }
 
@@ -86,13 +96,10 @@ export default class LobbyChat extends React.Component {
               margin: 0,
               padding: 0,
             }}>WiFi LiT</Text>
-            <Text style={{
-              color: 'white',
-              alignSelf: 'center',
-              top: 0,
-              margin: 0,
-              padding: 0,
-            }}> {this.state.sock} | {this.state.ss} | {this.state.bss}| {this.state.wifiBool}| {this.state.wifiType} | {this.state.bc} | {this.state.sn} </Text>
+            <Text style={styles.network}> {this.state.sock} </Text>
+            <Text style={styles.network}> {this.state.wifiBool}: {this.state.ss} </Text>
+            <Text style={styles.network}> IP: {this.state.ip}  |  Broadcast: {this.state.bc} </Text>
+            <Text style={styles.network}> Console Log: {this.state.console} </Text>
           </View>
           <View style={{ flex: 16 }}>
             <ScrollView
@@ -166,5 +173,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     padding: 2,
     justifyContent: 'flex-end',
+  },
+  network: {
+    color: 'white',
+    alignSelf: 'center',
+    top: 0,
+    margin: 0,
+    padding: 0,
   }
 });
