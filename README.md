@@ -3,6 +3,13 @@ Connects mobile devices that are on the same wifi network to a localized chatroo
 
 Have you ever wished you could text someone in the same room but you don't have their contact information or even know who they are? Now you can talk to anybody who is connected on the same wifi. LIT!
 
+
+![Screenshot](1.png)
+![Screenshot](2.png)
+![Screenshot](3.png)
+![Screenshot](4.png)
+
+
 # The Stack
 
 React Native
