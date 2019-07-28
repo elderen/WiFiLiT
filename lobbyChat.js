@@ -19,8 +19,7 @@ export default class LobbyChat extends React.Component {
     ip: 'N/A',
     ss: 'No SSID',
     bc: 'No Broadcast',
-    wifiBool: 'false',
-    console: 0
+    wifiBool: 'false'
   }
   constructor(props) {
     super(props)
@@ -30,8 +29,8 @@ export default class LobbyChat extends React.Component {
 
     // Different Sockets
     // socket = io("https://wich.herokuapp.com/");
-    socket = io('http://ec2-3-93-76-230.compute-1.amazonaws.com')
-    // socket = io('http://localhost:3000')
+    // socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
+    socket = io('http://localhost:3000')
   }
 
   componentDidMount() {
@@ -60,10 +59,6 @@ export default class LobbyChat extends React.Component {
 
     socket.emit('ssid', ssid, () => {
       socket.on('update', (msg) => { this.setState({ sock: 'Websocket Connected', logs: msg}, ()=>{
-        let counter = this.state.console + 1
-        this.setState({
-          console: counter
-        })
       }) })
     })
     this.setState({
@@ -74,8 +69,8 @@ export default class LobbyChat extends React.Component {
   }
 
   onSubmitEdit() {
-    let newLog = { 'user': this.props.name, 'room': 'lobby', 'message': this.state.message }
-    socket.send(newLog, () => {
+    let newLog = { 'user': this.props.name, 'message': this.state.message }
+    socket.send(newLog, this.state.ss, () => {
       socket.on('update', (msg) => { this.setState({ logs: msg }) })
     })
   }
@@ -99,7 +94,6 @@ export default class LobbyChat extends React.Component {
             <Text style={styles.network}> {this.state.sock} </Text>
             <Text style={styles.network}> {this.state.wifiBool}: {this.state.ss} </Text>
             <Text style={styles.network}> IP: {this.state.ip}  |  Broadcast: {this.state.bc} </Text>
-            <Text style={styles.network}> Console Log: {this.state.console} </Text>
           </View>
           <View style={{ flex: 16 }}>
             <ScrollView
@@ -126,7 +120,7 @@ export default class LobbyChat extends React.Component {
             style={styles.textBox}
             multiline={false}
             value={this.state.message}
-            placeholder={`Say something LIT ${this.props.name}!`}
+            placeholder={`Write something LIT ${this.props.name}!`}
             placeholderTextColor="lightgray"
             allowFontScaling={true}
             clearTextOnFocus={true}
