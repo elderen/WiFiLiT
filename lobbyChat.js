@@ -29,8 +29,8 @@ export default class LobbyChat extends React.Component {
 
     // Different Sockets
     // socket = io("https://wich.herokuapp.com/");
-    // socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
-    socket = io('http://localhost:3000')
+    socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
+    // socket = io('http://localhost:3000')
   }
 
   componentDidMount() {
@@ -57,10 +57,11 @@ export default class LobbyChat extends React.Component {
     const ssid = await NetworkInfo.getSSID();
     const broadcast = await NetworkInfo.getBroadcast();
 
-    socket.emit('ssid', ssid, () => {
-      socket.on('update', (msg) => { this.setState({ sock: 'Websocket Connected', logs: msg}, ()=>{
-      }) })
-    })
+    socket.emit('ssid', ssid)
+    // socket.emit('ssid', ssid, () => {
+    //   socket.on('update', (msg) => { this.setState({ sock: 'Websocket Connected', logs: msg}, ()=>{
+    //   }) })
+    // })
     this.setState({
       ip: ipAddress,
       ss: ssid,
