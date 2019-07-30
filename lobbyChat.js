@@ -24,13 +24,13 @@ export default class LobbyChat extends React.Component {
   constructor(props) {
     super(props)
     // Function Binds
-    this.onSubmitEdit = this.onSubmitEdit.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
     this.getNetworkInfo = this.getNetworkInfo.bind(this);
 
     // Different Sockets
     // socket = io("https://wich.herokuapp.com/");
-    socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
-    // socket = io('http://localhost:3000')
+    // socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
+    socket = io('http://localhost:3000')
   }
 
   componentDidMount() {
@@ -57,20 +57,29 @@ export default class LobbyChat extends React.Component {
     const ssid = await NetworkInfo.getSSID();
     const broadcast = await NetworkInfo.getBroadcast();
 
-    socket.emit('ssid', ssid)
-    // socket.emit('ssid', ssid, () => {
-    //   socket.on('update', (msg) => { this.setState({ sock: 'Websocket Connected', logs: msg}, ()=>{
-    //   }) })
-    // })
+    if (ssid) {
+      this.setState({
+        ss: ssid
+      }, () => {
+        socket.emit('ssid', this.state.ss)
+      })
+    } else {
+      this.setState({
+        ss: 'World Lobby'
+      }, () => {
+        socket.emit('ssid', this.state.ss)
+      })
+    }
+
     this.setState({
       ip: ipAddress,
-      ss: ssid,
       bc: broadcast
     })
   }
 
-  onSubmitEdit() {
-    let newLog = { 'user': this.props.name, 'message': this.state.message }
+  onSubmit() {
+
+    let newLog = { 'user': this.props.name, 'room': this.state.ss, 'message': this.state.message }
     socket.send(newLog, this.state.ss, () => {
       socket.on('update', (msg) => { this.setState({ logs: msg }) })
     })
@@ -127,7 +136,7 @@ export default class LobbyChat extends React.Component {
             clearTextOnFocus={true}
             onChangeText={(value) => this.setState({ message: value })}
             onSubmitEditing={() => {
-              this.onSubmitEdit()
+              this.onSubmit()
               this.textInput.clear()
             }}
             enablesReturnKeyAutomatically={true}
