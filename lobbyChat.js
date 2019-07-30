@@ -29,8 +29,8 @@ export default class LobbyChat extends React.Component {
 
     // Different Sockets
     // socket = io("https://wich.herokuapp.com/");
-    // socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
-    socket = io('http://localhost:3000')
+    socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
+    // socket = io('http://localhost:3000')
   }
 
   componentDidMount() {
@@ -103,9 +103,9 @@ export default class LobbyChat extends React.Component {
             }}>WiFi LiT</Text>
             <Text style={styles.network}> {this.state.sock} </Text>
             <Text style={styles.network}> {this.state.wifiBool}: {this.state.ss} </Text>
-            <Text style={styles.network}> IP: {this.state.ip}  |  Broadcast: {this.state.bc} </Text>
+            {/* <Text style={styles.network}> IP: {this.state.ip}  |  Broadcast: {this.state.bc} </Text> */}
           </View>
-          <View style={{ flex: 16 }}>
+          <View style={styles.messagesView}>
             <ScrollView
               ref={ref => this.scrollView = ref}
               onContentSizeChange={(contentWidth, contentHeight) => {
@@ -114,13 +114,7 @@ export default class LobbyChat extends React.Component {
             >
               <View style={styles.words}>
                 {this.state.logs.map((obj, n) => {
-                  let currentColor = 'white'
-                  if (n % 2 === 0) {
-                    currentColor = '#f5f5f5'
-                  } else {
-                    currentColor = 'white'
-                  }
-                  return <Text style={{ alignSelf: 'stretch', backgroundColor: currentColor }} key={n}>{obj.user}: {obj.message}</Text>
+                  return <View style={styles.message} key={n}><Text style={styles.messageText}>{obj.user}: {obj.message}</Text></View>
                 })}
               </View>
             </ScrollView>
@@ -163,13 +157,9 @@ const styles = StyleSheet.create({
     marginTop: 14,
     marginBottom: 2,
   },
-  words: {
-    flex: 1,
-    fontSize: 30,
-    color: 'gold',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    fontWeight: 'bold',
+  messagesView: {
+    flex: 16,
+    marginTop: 12
   },
   textBox: {
     flex: 1,
@@ -184,5 +174,26 @@ const styles = StyleSheet.create({
     top: 0,
     margin: 0,
     padding: 0,
+  },
+  words: {
+
+  },
+  message: {
+    alignSelf: 'baseline', 
+    backgroundColor: 'gold',//currentColor,
+    borderRadius: 12,
+    borderWidth: 0.5,
+    borderColor: 'black',
+    color: 'green',
+    // paddingLeft: 3,
+    marginHorizontal: 20,
+    marginBottom: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 4
+    // borderStyle: 'solid',
+    // borderColor: 'gold'
+
+  },
+  messageText: {
   }
 });
