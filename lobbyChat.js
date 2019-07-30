@@ -42,7 +42,7 @@ export default class LobbyChat extends React.Component {
           this.setState({
             wifiBool: 'WiFi Connected'
           })
-          socket.on('update', (msg) => { this.setState({ sock: 'Websocket Connected', logs: msg }) })
+          socket.on('update', (msg) => { this.setState({ sock: 'Socket Server Connected', logs: msg }) })
         } else if (hasInternetConnection === false) {
           this.setState({
             wifiBool: 'No WiFi'
@@ -101,7 +101,7 @@ export default class LobbyChat extends React.Component {
               margin: 0,
               padding: 0,
             }}>WiFi LiT</Text>
-            <Text style={styles.network}> {this.state.sock} </Text>
+            {/* <Text style={styles.network}> {this.state.sock} </Text> */}
             <Text style={styles.network}> {this.state.wifiBool}: {this.state.ss} </Text>
             {/* <Text style={styles.network}> IP: {this.state.ip}  |  Broadcast: {this.state.bc} </Text> */}
           </View>
