@@ -4,6 +4,7 @@ import { YellowBox, StyleSheet, Text, TextInput, View, ScrollView, KeyboardAvoid
 import io from 'socket.io-client/dist/socket.io';
 import { NetworkInfo } from "react-native-network-info";
 import NetInfo from "@react-native-community/netinfo";
+import TopMessage from './topMessage';
 
 console.ignoredYellowBox = ['Remote debugger'];
 YellowBox.ignoreWarnings([
@@ -114,7 +115,8 @@ export default class LobbyChat extends React.Component {
             >
               <View style={styles.words}>
                 {this.state.logs.map((obj, n) => {
-                  return <View style={styles.message} key={n}><Text style={styles.messageText}>{obj.user}: {obj.message}</Text></View>
+                  // return <View style={styles.message} key={n}><Text style={styles.messageText}>{obj.user}: {obj.message}</Text></View>
+                  return <TopMessage user={obj.user} message={obj.message} key={n} />
                 })}
               </View>
             </ScrollView>
@@ -150,16 +152,17 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignSelf: 'stretch',
-    backgroundColor: 'black',
+    backgroundColor: 'transparent',
   },
   header: {
     flex: 2,
     marginTop: 14,
-    marginBottom: 2,
+    marginBottom: 0,
+    padding: 0
   },
   messagesView: {
     flex: 16,
-    marginTop: 12
+    marginTop: 8
   },
   textBox: {
     flex: 1,
@@ -175,25 +178,4 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
   },
-  words: {
-
-  },
-  message: {
-    alignSelf: 'baseline', 
-    backgroundColor: 'gold',//currentColor,
-    borderRadius: 12,
-    borderWidth: 0.5,
-    borderColor: 'black',
-    color: 'green',
-    // paddingLeft: 3,
-    marginHorizontal: 20,
-    marginBottom: 4,
-    paddingHorizontal: 8,
-    paddingVertical: 4
-    // borderStyle: 'solid',
-    // borderColor: 'gold'
-
-  },
-  messageText: {
-  }
 });

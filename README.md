@@ -1,13 +1,17 @@
 # WiFiLit
-Connects mobile devices that are on the same wifi network to a localized chatroom. Currently only supports iOS.
+Connects mobile devices that are on the same wifi network to a localized chatroom. Currently  on iOS only.
 
-Have you ever wished you could text someone in the same room but you don't have their contact information or even know who they are? Now you can talk to anybody who is connected on the same wifi. LIT!
+Wanted to message someone in the same room but didn't have their contact information or even know who they are? Now you can talk to anybody in that room who is connected on the same wifi. LIT!
 
 
 ![Screenshot](1.png)
-![Screenshot](2.png)
+<!-- ![Screenshot](2.png)
 ![Screenshot](3.png)
-![Screenshot](4.png)
+![Screenshot](4.png) -->
+
+# Install
+git clone
+npm install
 
 
 # The Stack
