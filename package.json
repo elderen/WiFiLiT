@@ -1,28 +1,23 @@
 {
-  "name": "WiFiLit",
+  "name": "WiFiLiT",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native run-ios",
-    "build": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios",
+    "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-community/netinfo": "^4.1.3",
     "react": "16.8.6",
-    "react-native": "0.60.4",
-    "react-native-network-info": "^5.1.0",
-    "rn-prompt": "^1.0.4",
-    "socket.io": "^2.2.0"
+    "react-native": "0.60.5"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
     "@babel/runtime": "7.5.5",
     "@react-native-community/eslint-config": "0.0.3",
-    "babel-jest": "24.8.0",
-    "eslint": "5.16.0",
-    "jest": "24.8.0",
+    "babel-jest": "24.9.0",
+    "eslint": "6.1.0",
+    "jest": "24.9.0",
     "metro-react-native-babel-preset": "0.54.1",
     "react-test-renderer": "16.8.6"
   },

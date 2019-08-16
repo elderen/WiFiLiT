@@ -1,12 +1,11 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'WiFiLit' do
-  # Pods for WiFiLit
+target 'WiFiLiT' do
+  # Pods for WiFiLiT
   pod 'React', :path => '../node_modules/react-native/'
   pod 'React-Core', :path => '../node_modules/react-native/React'
   pod 'React-DevSupport', :path => '../node_modules/react-native/React'
-  pod 'React-fishhook', :path => '../node_modules/react-native/Libraries/fishhook'
   pod 'React-RCTActionSheet', :path => '../node_modules/react-native/Libraries/ActionSheetIOS'
   pod 'React-RCTAnimation', :path => '../node_modules/react-native/Libraries/NativeAnimation'
   pod 'React-RCTBlob', :path => '../node_modules/react-native/Libraries/Blob'
@@ -18,7 +17,6 @@ target 'WiFiLit' do
   pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
   pod 'React-RCTWebSocket', :path => '../node_modules/react-native/Libraries/WebSocket'
 
-
   pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
   pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
   pod 'React-jsiexecutor', :path => '../node_modules/react-native/ReactCommon/jsiexecutor'
@@ -29,7 +27,7 @@ target 'WiFiLit' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'WiFiLitTests' do
+  target 'WiFiLiTTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -37,10 +35,10 @@ target 'WiFiLit' do
   use_native_modules!
 end
 
-target 'WiFiLit-tvOS' do
-  # Pods for WiFiLit-tvOS
+target 'WiFiLiT-tvOS' do
+  # Pods for WiFiLiT-tvOS
 
-  target 'WiFiLit-tvOSTests' do
+  target 'WiFiLiT-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

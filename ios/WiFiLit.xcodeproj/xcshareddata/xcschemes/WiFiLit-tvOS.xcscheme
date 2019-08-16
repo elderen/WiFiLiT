@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "WiFiLit-tvOS.app"
-               BlueprintName = "WiFiLit-tvOS"
-               ReferencedContainer = "container:WiFiLit.xcodeproj">
+               BuildableName = "WiFiLiT-tvOS.app"
+               BlueprintName = "WiFiLiT-tvOS"
+               ReferencedContainer = "container:WiFiLiT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "WiFiLit-tvOSTests.xctest"
-               BlueprintName = "WiFiLit-tvOSTests"
-               ReferencedContainer = "container:WiFiLit.xcodeproj">
+               BuildableName = "WiFiLiT-tvOSTests.xctest"
+               BlueprintName = "WiFiLiT-tvOSTests"
+               ReferencedContainer = "container:WiFiLiT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "WiFiLit-tvOSTests.xctest"
-               BlueprintName = "WiFiLit-tvOSTests"
-               ReferencedContainer = "container:WiFiLit.xcodeproj">
+               BuildableName = "WiFiLiT-tvOSTests.xctest"
+               BlueprintName = "WiFiLiT-tvOSTests"
+               ReferencedContainer = "container:WiFiLiT.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "WiFiLit-tvOS.app"
-            BlueprintName = "WiFiLit-tvOS"
-            ReferencedContainer = "container:WiFiLit.xcodeproj">
+            BuildableName = "WiFiLiT-tvOS.app"
+            BlueprintName = "WiFiLiT-tvOS"
+            ReferencedContainer = "container:WiFiLiT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "WiFiLit-tvOS.app"
-            BlueprintName = "WiFiLit-tvOS"
-            ReferencedContainer = "container:WiFiLit.xcodeproj">
+            BuildableName = "WiFiLiT-tvOS.app"
+            BlueprintName = "WiFiLiT-tvOS"
+            ReferencedContainer = "container:WiFiLiT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "WiFiLit-tvOS.app"
-            BlueprintName = "WiFiLit-tvOS"
-            ReferencedContainer = "container:WiFiLit.xcodeproj">
+            BuildableName = "WiFiLiT-tvOS.app"
+            BlueprintName = "WiFiLiT-tvOS"
+            ReferencedContainer = "container:WiFiLiT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
