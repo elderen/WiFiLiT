@@ -12,14 +12,14 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2248730723D194F429F07874 /* libPods-WiFiLiTTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91EE147DFE02F0A1DC092B02 /* libPods-WiFiLiTTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* WiFiLiTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WiFiLiTTests.m */; };
-		2F460CD938AD11F32871CB1E /* libPods-WiFiLiT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20943E39147CA52061E5B583 /* libPods-WiFiLiT.a */; };
-		3E40FB5549AF19660ACA37C0 /* libPods-WiFiLiTTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2F4A0D79C7BE46BF7C2A33 /* libPods-WiFiLiTTests.a */; };
-		A0892488E0B7D093C9F859D7 /* libPods-WiFiLiT-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6C2C70DECDB994D4526934 /* libPods-WiFiLiT-tvOSTests.a */; };
-		AABA5DF298BCB2D9E3B949B6 /* libPods-WiFiLiT-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 414C5F83FC17E296116C23C1 /* libPods-WiFiLiT-tvOS.a */; };
+		30D9D05EB3EF175917F99058 /* libPods-WiFiLiT-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB20AF2CF9554A878D7A6469 /* libPods-WiFiLiT-tvOS.a */; };
+		9CAF672311FAA722713A7C7B /* libPods-WiFiLiT-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 939AC535DCE0087A5C060B7B /* libPods-WiFiLiT-tvOSTests.a */; };
+		D4CA54C16F71E00091B40B16 /* libPods-WiFiLiT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBBA1FBAEC4FA00D29753D5B /* libPods-WiFiLiT.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,22 +51,22 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WiFiLiT/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WiFiLiT/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WiFiLiT/main.m; sourceTree = "<group>"; };
-		1AE99877E8299BBD15397CB2 /* Pods-WiFiLiT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT.release.xcconfig"; path = "Target Support Files/Pods-WiFiLiT/Pods-WiFiLiT.release.xcconfig"; sourceTree = "<group>"; };
-		20943E39147CA52061E5B583 /* libPods-WiFiLiT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WiFiLiT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A863BAAF87F1B90AC1F89C2 /* Pods-WiFiLiT-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-WiFiLiT-tvOS/Pods-WiFiLiT-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		2C00C0C64A5A6C96038A19F4 /* Pods-WiFiLiT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT.release.xcconfig"; path = "Target Support Files/Pods-WiFiLiT/Pods-WiFiLiT.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* WiFiLiT-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WiFiLiT-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* WiFiLiT-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WiFiLiT-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		414C5F83FC17E296116C23C1 /* libPods-WiFiLiT-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WiFiLiT-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FD6C45FF73476CCC06A162F /* Pods-WiFiLiT-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-WiFiLiT-tvOS/Pods-WiFiLiT-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		6A2F4A0D79C7BE46BF7C2A33 /* libPods-WiFiLiTTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WiFiLiTTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7049F4BEF7129373FE3E00EC /* Pods-WiFiLiTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiTTests.release.xcconfig"; path = "Target Support Files/Pods-WiFiLiTTests/Pods-WiFiLiTTests.release.xcconfig"; sourceTree = "<group>"; };
-		8668EC0B0764A0DE9C8E5E22 /* Pods-WiFiLiT-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-WiFiLiT-tvOSTests/Pods-WiFiLiT-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8C4C15C98C7046182FC18850 /* Pods-WiFiLiT-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-WiFiLiT-tvOSTests/Pods-WiFiLiT-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		8DF803C8E1DBD9667C24A442 /* Pods-WiFiLiTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiTTests.debug.xcconfig"; path = "Target Support Files/Pods-WiFiLiTTests/Pods-WiFiLiTTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C71DB1E1094B682D86A0724A /* Pods-WiFiLiT-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT-tvOS.release.xcconfig"; path = "Target Support Files/Pods-WiFiLiT-tvOS/Pods-WiFiLiT-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		DF1C4CDD2AA610DBD0A82951 /* Pods-WiFiLiT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT.debug.xcconfig"; path = "Target Support Files/Pods-WiFiLiT/Pods-WiFiLiT.debug.xcconfig"; sourceTree = "<group>"; };
+		3779D54F5908F44E5DEAAB15 /* Pods-WiFiLiT-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT-tvOS.release.xcconfig"; path = "Target Support Files/Pods-WiFiLiT-tvOS/Pods-WiFiLiT-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		3A5401B980271C0D79CB7249 /* Pods-WiFiLiT-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-WiFiLiT-tvOSTests/Pods-WiFiLiT-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		8468CB7775BF38AD2895E897 /* Pods-WiFiLiT-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-WiFiLiT-tvOSTests/Pods-WiFiLiT-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8752E6B8FBD85EDD6D44361B /* Pods-WiFiLiT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiT.debug.xcconfig"; path = "Target Support Files/Pods-WiFiLiT/Pods-WiFiLiT.debug.xcconfig"; sourceTree = "<group>"; };
+		91EE147DFE02F0A1DC092B02 /* libPods-WiFiLiTTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WiFiLiTTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		939AC535DCE0087A5C060B7B /* libPods-WiFiLiT-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WiFiLiT-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5DFA05C009CD13AD5312D5E /* Pods-WiFiLiTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiTTests.release.xcconfig"; path = "Target Support Files/Pods-WiFiLiTTests/Pods-WiFiLiTTests.release.xcconfig"; sourceTree = "<group>"; };
+		A933276B6FB2569A2CA5F439 /* Pods-WiFiLiTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiFiLiTTests.debug.xcconfig"; path = "Target Support Files/Pods-WiFiLiTTests/Pods-WiFiLiTTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EBBA1FBAEC4FA00D29753D5B /* libPods-WiFiLiT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WiFiLiT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		EE6C2C70DECDB994D4526934 /* libPods-WiFiLiT-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WiFiLiT-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB20AF2CF9554A878D7A6469 /* libPods-WiFiLiT-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WiFiLiT-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E40FB5549AF19660ACA37C0 /* libPods-WiFiLiTTests.a in Frameworks */,
+				2248730723D194F429F07874 /* libPods-WiFiLiTTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F460CD938AD11F32871CB1E /* libPods-WiFiLiT.a in Frameworks */,
+				D4CA54C16F71E00091B40B16 /* libPods-WiFiLiT.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AABA5DF298BCB2D9E3B949B6 /* libPods-WiFiLiT-tvOS.a in Frameworks */,
+				30D9D05EB3EF175917F99058 /* libPods-WiFiLiT-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0892488E0B7D093C9F859D7 /* libPods-WiFiLiT-tvOSTests.a in Frameworks */,
+				9CAF672311FAA722713A7C7B /* libPods-WiFiLiT-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,28 +141,12 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				20943E39147CA52061E5B583 /* libPods-WiFiLiT.a */,
-				414C5F83FC17E296116C23C1 /* libPods-WiFiLiT-tvOS.a */,
-				EE6C2C70DECDB994D4526934 /* libPods-WiFiLiT-tvOSTests.a */,
-				6A2F4A0D79C7BE46BF7C2A33 /* libPods-WiFiLiTTests.a */,
+				EBBA1FBAEC4FA00D29753D5B /* libPods-WiFiLiT.a */,
+				FB20AF2CF9554A878D7A6469 /* libPods-WiFiLiT-tvOS.a */,
+				939AC535DCE0087A5C060B7B /* libPods-WiFiLiT-tvOSTests.a */,
+				91EE147DFE02F0A1DC092B02 /* libPods-WiFiLiTTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5469C7E7AFC0E5BF056212CD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DF1C4CDD2AA610DBD0A82951 /* Pods-WiFiLiT.debug.xcconfig */,
-				1AE99877E8299BBD15397CB2 /* Pods-WiFiLiT.release.xcconfig */,
-				5FD6C45FF73476CCC06A162F /* Pods-WiFiLiT-tvOS.debug.xcconfig */,
-				C71DB1E1094B682D86A0724A /* Pods-WiFiLiT-tvOS.release.xcconfig */,
-				8668EC0B0764A0DE9C8E5E22 /* Pods-WiFiLiT-tvOSTests.debug.xcconfig */,
-				8C4C15C98C7046182FC18850 /* Pods-WiFiLiT-tvOSTests.release.xcconfig */,
-				8DF803C8E1DBD9667C24A442 /* Pods-WiFiLiTTests.debug.xcconfig */,
-				7049F4BEF7129373FE3E00EC /* Pods-WiFiLiTTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -180,7 +164,7 @@
 				00E356EF1AD99517003FC87E /* WiFiLiTTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				5469C7E7AFC0E5BF056212CD /* Pods */,
+				84038A0BB1D659F799EC2A4C /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -198,6 +182,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		84038A0BB1D659F799EC2A4C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8752E6B8FBD85EDD6D44361B /* Pods-WiFiLiT.debug.xcconfig */,
+				2C00C0C64A5A6C96038A19F4 /* Pods-WiFiLiT.release.xcconfig */,
+				1A863BAAF87F1B90AC1F89C2 /* Pods-WiFiLiT-tvOS.debug.xcconfig */,
+				3779D54F5908F44E5DEAAB15 /* Pods-WiFiLiT-tvOS.release.xcconfig */,
+				8468CB7775BF38AD2895E897 /* Pods-WiFiLiT-tvOSTests.debug.xcconfig */,
+				3A5401B980271C0D79CB7249 /* Pods-WiFiLiT-tvOSTests.release.xcconfig */,
+				A933276B6FB2569A2CA5F439 /* Pods-WiFiLiTTests.debug.xcconfig */,
+				A5DFA05C009CD13AD5312D5E /* Pods-WiFiLiTTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -205,7 +205,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "WiFiLiTTests" */;
 			buildPhases = (
-				E8D85A897AA0CED2CB79665E /* [CP] Check Pods Manifest.lock */,
+				27C51F405078FBFB5BA037DA /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -224,7 +224,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "WiFiLiT" */;
 			buildPhases = (
-				F06E6B4FDD10A3ED689A7AA0 /* [CP] Check Pods Manifest.lock */,
+				6C25CE9356AE41CC879D0B4D /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -244,7 +244,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "WiFiLiT-tvOS" */;
 			buildPhases = (
-				6CE0E104237418586F9440E7 /* [CP] Check Pods Manifest.lock */,
+				2567871BC802F618527140AC /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -264,7 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "WiFiLiT-tvOSTests" */;
 			buildPhases = (
-				35866976CCCEC3F8CA48F2F7 /* [CP] Check Pods Manifest.lock */,
+				10A15357C1CCE13DA943A928 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -373,21 +373,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		35866976CCCEC3F8CA48F2F7 /* [CP] Check Pods Manifest.lock */ = {
+		10A15357C1CCE13DA943A928 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -409,7 +395,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6CE0E104237418586F9440E7 /* [CP] Check Pods Manifest.lock */ = {
+		2567871BC802F618527140AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -431,7 +417,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E8D85A897AA0CED2CB79665E /* [CP] Check Pods Manifest.lock */ = {
+		27C51F405078FBFB5BA037DA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -453,7 +439,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F06E6B4FDD10A3ED689A7AA0 /* [CP] Check Pods Manifest.lock */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		6C25CE9356AE41CC879D0B4D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -580,7 +580,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DF803C8E1DBD9667C24A442 /* Pods-WiFiLiTTests.debug.xcconfig */;
+			baseConfigurationReference = A933276B6FB2569A2CA5F439 /* Pods-WiFiLiTTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -603,7 +603,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7049F4BEF7129373FE3E00EC /* Pods-WiFiLiTTests.release.xcconfig */;
+			baseConfigurationReference = A5DFA05C009CD13AD5312D5E /* Pods-WiFiLiTTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -623,7 +623,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF1C4CDD2AA610DBD0A82951 /* Pods-WiFiLiT.debug.xcconfig */;
+			baseConfigurationReference = 8752E6B8FBD85EDD6D44361B /* Pods-WiFiLiT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -643,7 +643,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AE99877E8299BBD15397CB2 /* Pods-WiFiLiT.release.xcconfig */;
+			baseConfigurationReference = 2C00C0C64A5A6C96038A19F4 /* Pods-WiFiLiT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -662,7 +662,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FD6C45FF73476CCC06A162F /* Pods-WiFiLiT-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 1A863BAAF87F1B90AC1F89C2 /* Pods-WiFiLiT-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -690,7 +690,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C71DB1E1094B682D86A0724A /* Pods-WiFiLiT-tvOS.release.xcconfig */;
+			baseConfigurationReference = 3779D54F5908F44E5DEAAB15 /* Pods-WiFiLiT-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -718,7 +718,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8668EC0B0764A0DE9C8E5E22 /* Pods-WiFiLiT-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 8468CB7775BF38AD2895E897 /* Pods-WiFiLiT-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -745,7 +745,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C4C15C98C7046182FC18850 /* Pods-WiFiLiT-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 3A5401B980271C0D79CB7249 /* Pods-WiFiLiT-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

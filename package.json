@@ -3,13 +3,18 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start",
+    "start": "react-native run-ios",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/netinfo": "^4.1.4",
     "react": "16.8.6",
-    "react-native": "0.60.5"
+    "react-native": "0.60.5",
+    "react-native-navigation": "^3.0.0",
+    "react-native-network-info": "^5.1.0",
+    "rn-prompt": "^1.0.4",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
