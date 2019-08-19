@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native run-ios",
+    "reset": "watchman watch-del-all",
     "test": "jest",
     "lint": "eslint ."
   },
