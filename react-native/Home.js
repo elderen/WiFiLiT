@@ -60,7 +60,10 @@ export default class Home extends Component {
         <View style={styles.button}>
           <Button
             title="Login"
-            onPress={() => { this.props.navigation.navigate('SignIn') }}
+            onPress={() => { this.props.navigation.navigate('SignIn', {
+              username: this.state.username,
+              password: this.state.password
+            }) }}
           />
           <Button
             title="Sign Up"
@@ -87,21 +90,20 @@ const styles = StyleSheet.create({
     color: 'gold',
     fontSize: 50,
     fontWeight: 'bold',
-    borderColor: 'black',
-    borderWidth: 1,
+    // borderColor: 'black',
+    // borderWidth: 1,
   },
   inputContainer: {
     width: '80%',
-
   },
   input: {
     borderColor: 'black',
     borderWidth: 1,
-    // alignSelf: 'center'
-
+    margin: 5,
+    padding: 10
   },
   button: {
-    borderColor: 'black',
-    borderWidth: 1,
+    // borderColor: 'black',
+    // borderWidth: 1,
   }
 });

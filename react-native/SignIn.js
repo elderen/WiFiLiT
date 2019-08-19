@@ -8,6 +8,7 @@ class SignIn extends Component {
     return (
       <View style={styles.container}>
         <Text>SignIn</Text>
+        <Text>{this.props.navigation.state.params.password}</Text>
       </View>
     );
   }
