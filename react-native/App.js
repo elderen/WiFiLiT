@@ -1,27 +1,33 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator, createMaterialTopTabNavigator, NavigationEvents } from "react-navigation";
 import Loading from './Loading'
+import Authentication from './Authentication'
 import Home from './Home'
+import SignIn from './SignIn'
+import Register from './Register'
 import Dashboard from './Dashboard'
 
-const AppSwitchNavigator = createSwitchNavigator({
-  Welcome:{screen: Home},
-  Dashboard: {screen: Dashboard}
-})
+const AppSwitchNavigator = createSwitchNavigator(
+  {
+    Welcome: { screen: Home },
+    Dashboard: { screen: Dashboard }
+  }
+)
 
 
 // React Navigation
 const AppNavigator = createStackNavigator(
   {
     Home: Home,
-    Loading: Loading
+    SignIn: SignIn,
+    Register: Register
   },
   {
-    initialRouteName: "Loading",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
-      headerStyle : {
+      headerStyle: {
         backgroundColor: 'gold'
       }
     }
@@ -32,34 +38,45 @@ const AppDrawerNavigator = createDrawerNavigator(
   {
     Home: Home,
     Loading: Loading,
-    Dashboard: Dashboard
+    Dashboard: Dashboard,
+    Auth: Authentication
   },
   {
-    initialRouteName: "Loading",
+    initialRouteName: "Auth",
+    tabBarOptions: {
+      style: { display: "none" }
+    },
     defaultNavigationOptions: {
-      headerStyle : {
+      headerStyle: {
         backgroundColor: 'gold'
       }
     }
   }
 )
 
-const SwipeableNavigator = createMaterialTopTabNavigator({
-  FrontCard: Home,
-  BackCard: Loading
-},
-{
-  swipeEnabled: true,
-  tabBarOptions: {
-    style: { display: "none" }
+const SwipeableNavigator = createMaterialTopTabNavigator(
+  {
+    Left: Home,
+    Middle: Loading,
+    Right: Authentication
+  },
+  {
+    initialRouteName: "Middle",
+    swipeEnabled: true,
+    tabBarOptions: {
+      style: { display: "none" }
+    }
   }
-});
+);
 
-const AppContainer = createAppContainer(SwipeableNavigator);
+const AppContainer = createAppContainer(AppNavigator);
 
 // Main App
 export default class App extends Component {
+
   render() {
-    return <AppContainer theme="dark"/>;
+    return (
+      <AppContainer theme="dark" />
+    );
   }
 }
