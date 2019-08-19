@@ -8,6 +8,7 @@ import Home from './Home'
 import SignIn from './SignIn'
 import Register from './Register'
 import Dashboard from './Dashboard'
+import PasswordHelp from './PasswordHelp'
 
 const AppSwitchNavigator = createSwitchNavigator(
   {
@@ -22,7 +23,8 @@ const AppNavigator = createStackNavigator(
   {
     Home: Home,
     SignIn: SignIn,
-    Register: Register
+    Register: Register,
+    Password: PasswordHelp
   },
   {
     initialRouteName: "Home",

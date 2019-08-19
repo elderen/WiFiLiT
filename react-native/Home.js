@@ -57,18 +57,29 @@ export default class Home extends Component {
             color='black'
           />
         </View>
-        <View style={styles.button}>
-          <Button
-            title="Login"
-            onPress={() => { this.props.navigation.navigate('SignIn', {
-              username: this.state.username,
-              password: this.state.password
-            }) }}
-          />
-          <Button
-            title="Sign Up"
-            onPress={() => { this.props.navigation.navigate('Register') }}
-          />
+        <View>
+          <View style={styles.button}>
+            <Button
+              title="Login"
+              onPress={() => { this.props.navigation.navigate('SignIn', {
+                username: this.state.username,
+                password: this.state.password
+              }) }}
+              color="white"
+            />
+          </View>
+          <View>
+            <Button
+              title="Sign Up"
+              onPress={() => { this.props.navigation.navigate('Register') }}
+              color="red"
+            />
+            <Button
+              title="Forgot Password?"
+              onPress={() => { this.props.navigation.navigate('Password') }}
+              color="red"
+            />
+          </View>
         </View>
       </View>
     );
@@ -88,7 +99,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'gold',
-    fontSize: 50,
+    fontSize: 60,
     fontWeight: 'bold',
     // borderColor: 'black',
     // borderWidth: 1,
@@ -103,7 +114,12 @@ const styles = StyleSheet.create({
     padding: 10
   },
   button: {
-    // borderColor: 'black',
-    // borderWidth: 1,
+    margin: 15, 
+    backgroundColor: "darkorange",
+    alignSelf: 'center',
+    margin: 3,
+    borderRadius: 14,
+    padding: 1,
+    width: 120
   }
 });
