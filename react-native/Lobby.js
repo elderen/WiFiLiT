@@ -1,13 +1,19 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import App from './components/App'
 
 // create a component
-class Dashboard extends Component {
+class Lobby extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      display: 'none'
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Dashboard</Text>
+        <App />
       </View>
     );
   }
@@ -17,11 +23,8 @@ class Dashboard extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
   },
 });
 
 //make this component available to the app
-export default Dashboard;
+export default Lobby;

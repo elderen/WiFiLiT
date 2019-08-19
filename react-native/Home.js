@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Button, View, Text, StyleSheet, TextInput, Image } from 'react-native';
-
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class Home extends Component {
   static navigationOptions = {
-    headerStyle: {
-      display: 'none'
-    }
+    header: null
   }
   constructor(props) {
     super(props);
@@ -14,12 +12,17 @@ export default class Home extends Component {
       username: '',
       password: ''
     }
-    this.onSubmit = this.onSubmit.bind(this);
+    // this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit() {
+  // signIn = async() => {
+  //   await AsyncStorage.setItem('userToken', 'Hank')
+  //   this.props.navigation.navigate('App')
+  // }
 
-  }
+  // onSubmit() {
+
+  // }
 
   render() {
     return (
@@ -61,17 +64,19 @@ export default class Home extends Component {
           <View style={styles.button}>
             <Button
               title="Login"
-              onPress={() => { this.props.navigation.navigate('SignIn', {
-                username: this.state.username,
-                password: this.state.password
-              }) }}
+              onPress={() => { this.props.navigation.navigate('App'
+              // , {
+              //   username: this.state.username,
+              //   password: this.state.password
+              // }
+              ) }}
               color="white"
             />
           </View>
           <View>
             <Button
               title="Sign Up"
-              onPress={() => { this.props.navigation.navigate('Register') }}
+              onPress={() => { this.props.navigation.navigate('SignUp') }}
               color="red"
             />
             <Button

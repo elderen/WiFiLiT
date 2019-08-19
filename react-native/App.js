@@ -7,78 +7,74 @@ import Authentication from './Authentication'
 import Home from './Home'
 import SignIn from './SignIn'
 import Register from './Register'
-import Dashboard from './Dashboard'
+import Lobby from './Lobby'
 import PasswordHelp from './PasswordHelp'
-
-const AppSwitchNavigator = createSwitchNavigator(
-  {
-    Welcome: { screen: Home },
-    Dashboard: { screen: Dashboard }
-  }
-)
-
+import Profile from './Profile'
+import Setting from './Setting'
+import PrivateChat from './PrivateChat'
 
 // React Navigation
-const AppNavigator = createStackNavigator(
+const StackNavigator = createStackNavigator(
   {
-    Home: Home,
+    Welcome: Home,
     SignIn: SignIn,
-    Register: Register,
+    SignUp: Register,
     Password: PasswordHelp
   },
   {
-    initialRouteName: "Home",
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: 'gold'
-      }
-    }
+    mode:'card'
   }
 );
 
+// Main Lobby with active drawer
 const AppDrawerNavigator = createDrawerNavigator(
   {
-    Home: Home,
-    Loading: Loading,
-    Dashboard: Dashboard,
-    Auth: Authentication
+    Lobby: Lobby,
+    Profile: Profile,
+    Setting: Setting
   },
   {
-    initialRouteName: "Auth",
-    tabBarOptions: {
-      style: { display: "none" }
-    },
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: 'gold'
-      }
-    }
+    unmountInactiveRoutes: true,
   }
 )
 
+// Main App: Lobby and Private Chat
 const SwipeableNavigator = createMaterialTopTabNavigator(
   {
-    Left: Home,
-    Middle: Loading,
-    Right: Authentication
+    Left: AppDrawerNavigator,
+    Middle: PrivateChat,
   },
   {
-    initialRouteName: "Middle",
+    unmountInactiveRoutes: true,
+    initialRouteName: "Left",
     swipeEnabled: true,
     tabBarOptions: {
       style: { display: "none" }
-    }
+    },
   }
 );
 
-const AppContainer = createAppContainer(AppNavigator);
+const SwitchNavigator = createSwitchNavigator(
+  {
+    AuthLoading: Authentication,
+    Auth: StackNavigator,
+    App: SwipeableNavigator
+  },
+  {
+    initialRouteName: 'AuthLoading'
+  }
+)
+
+// const SwipeContainer = createAppContainer(SwipeableNavigator);
+
+const AppContainer = createAppContainer(SwitchNavigator);
 
 // Main App
 export default class App extends Component {
 
   render() {
     return (
-      <AppContainer theme="dark" />
+      <AppContainer theme="dark"/>
     );
   }
 }

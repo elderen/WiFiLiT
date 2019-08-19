@@ -13,7 +13,7 @@ export default class Loading extends Component {
         <Text>Loading 123..</Text>
         <Button 
           title="Go to Home"
-          onPress={()=>{this.props.navigation.replace('Home')}}
+          onPress={()=>{this.props.navigation.navigate('Home')}}
         />
       </View>
     );

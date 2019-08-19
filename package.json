@@ -17,7 +17,6 @@
     "react-native-network-info": "^5.1.0",
     "react-native-reanimated": "^1.2.0",
     "react-navigation": "^3.11.1",
-    "rn-prompt": "^1.0.4",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {

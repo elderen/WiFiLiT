@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 // create a component
-class SignIn extends Component {
+class Setting extends Component {
+  static navigationOptions = {
+    title: 'Setting',
+  };
   render() {
     return (
       <View style={styles.container}>
-        <Text>SignIn</Text>
-        {/* <Text>{this.props.navigation.state.params.username}</Text> */}
-        {/* <Text>{this.props.navigation.state.params.password}</Text> */}
+        <Text>Setting</Text>
       </View>
     );
   }
@@ -26,4 +27,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default SignIn;
+export default Setting;
