@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import App from './components/App'
+import { withNavigation } from 'react-navigation';
 
 // create a component
 class Lobby extends Component {
@@ -13,7 +14,7 @@ class Lobby extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <App />
+        <App username={this.props.navigation.state.params.username}/>
       </View>
     );
   }
@@ -27,4 +28,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default Lobby;
+export default withNavigation(Lobby)

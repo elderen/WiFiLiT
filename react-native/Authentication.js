@@ -19,22 +19,14 @@ class Authentication extends Component {
     this.loadApp()
   }
   loadApp = async () => {
-    const userToken = await AsyncStorage.getItem('userToken')
+    const userToken = await AsyncStorage.getItem('Token')
     this.props.navigation.navigate(userToken ? 'App' : 'Auth')
   }
 
   render() {
     return (
       <View style={styles.container}>
-        {/* <NavigationEvents onDidFocus={() => {
-          isSignedIn()
-            .then((res) => {
-              this.setState({ signedIn: res, checkedSignIn: true })
-              alert("Signed In")
-            })
-            .catch(err => alert("An error with checking Authentication occurred"));
-        }} /> */}
-        <Text>Authenticating</Text>
+        <Text style={styles.words}>Authenticating</Text>
         <ActivityIndicator size="large" color="gold" />
       </View>
     );
@@ -47,8 +39,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   },
+  words: {
+    color: 'white',
+    margin: 18,
+    fontSize: 18
+  }
 });
 
 //make this component available to the app

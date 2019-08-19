@@ -1,16 +1,36 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 // create a component
 class Setting extends Component {
   static navigationOptions = {
     title: 'Setting',
   };
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: ''
+    }
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit = async () => {
+    await AsyncStorage.removeItem('Token')
+    this.props.navigation.navigate('AuthLoading')
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text>Setting</Text>
+        <Button
+          title="Log Out"
+          onPress={() => {this.onSubmit()}}
+          color="black"
+        />
       </View>
     );
   }

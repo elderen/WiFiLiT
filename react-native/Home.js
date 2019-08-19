@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
 import { Button, View, Text, StyleSheet, TextInput, Image } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { withNavigation } from 'react-navigation';
 
-export default class Home extends Component {
+class Home extends Component {
   static navigationOptions = {
     header: null
   }
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      username: 'Anon',
       password: ''
     }
-    // this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  // signIn = async() => {
-  //   await AsyncStorage.setItem('userToken', 'Hank')
-  //   this.props.navigation.navigate('App')
-  // }
-
-  // onSubmit() {
-
-  // }
+  onSubmit = async () => {
+    await AsyncStorage.setItem('Token', this.state.username);
+    this.props.navigation.navigate('Lobby', {username: this.state.username})
+  }
 
   render() {
     return (
@@ -64,19 +61,14 @@ export default class Home extends Component {
           <View style={styles.button}>
             <Button
               title="Login"
-              onPress={() => { this.props.navigation.navigate('App'
-              // , {
-              //   username: this.state.username,
-              //   password: this.state.password
-              // }
-              ) }}
+              onPress={() => { this.onSubmit() }}
               color="white"
             />
           </View>
           <View>
             <Button
               title="Sign Up"
-              onPress={() => { this.props.navigation.navigate('SignUp') }}
+              onPress={() => { this.props.navigation.navigate('SignIn', { username: this.state.username, password: this.state.password }) }}
               color="red"
             />
             <Button
@@ -119,7 +111,7 @@ const styles = StyleSheet.create({
     padding: 10
   },
   button: {
-    margin: 15, 
+    margin: 15,
     backgroundColor: "darkorange",
     alignSelf: 'center',
     margin: 3,
@@ -128,3 +120,5 @@ const styles = StyleSheet.create({
     width: 120
   }
 });
+
+export default withNavigation(Home)

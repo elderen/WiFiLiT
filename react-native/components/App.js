@@ -7,14 +7,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: 'Anon',
-      promptVisible: true
+      name: this.props.username,
     };
-  }
-  componentDidMount = () => {
-    this.setState({
-      promptVisible: true
-    })
   }
 
   render() {

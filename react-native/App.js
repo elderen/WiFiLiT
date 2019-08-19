@@ -22,7 +22,7 @@ const StackNavigator = createStackNavigator(
     Password: PasswordHelp
   },
   {
-    mode:'card'
+    mode: 'card'
   }
 );
 
@@ -32,9 +32,6 @@ const AppDrawerNavigator = createDrawerNavigator(
     Lobby: Lobby,
     Profile: Profile,
     Setting: Setting
-  },
-  {
-    unmountInactiveRoutes: true,
   }
 )
 
@@ -42,7 +39,7 @@ const AppDrawerNavigator = createDrawerNavigator(
 const SwipeableNavigator = createMaterialTopTabNavigator(
   {
     Left: AppDrawerNavigator,
-    Middle: PrivateChat,
+    Right: PrivateChat,
   },
   {
     unmountInactiveRoutes: true,
@@ -61,6 +58,7 @@ const SwitchNavigator = createSwitchNavigator(
     App: SwipeableNavigator
   },
   {
+    unmountInactiveRoutes: true,
     initialRouteName: 'AuthLoading'
   }
 )
@@ -74,7 +72,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <AppContainer theme="dark"/>
+      <AppContainer theme="dark" />
     );
   }
 }
