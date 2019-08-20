@@ -12,6 +12,7 @@ class SignUp extends Component {
     super(props);
     this.state = {
       username: '',
+      userAlert: '',
       password1: '',
       password2: '',
       pwAlert: '',
@@ -32,6 +33,18 @@ class SignUp extends Component {
     } else {
       this.setState({
         pwAlert: ""
+      })
+    }
+  }
+
+  checkUserLength() {
+    if (this.state.username.length < 4) {
+      this.setState({
+        userAlert: "Username must be at least 4 characters"
+      })
+    } else {
+      this.setState({
+        userAlert: ""
       })
     }
   }
@@ -84,6 +97,7 @@ class SignUp extends Component {
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <Text style={styles.words}>Username</Text>
+          <Text style={styles.pwLength}>{this.state.userAlert}</Text>
           <TextInput
             style={styles.input}
             multiline={false}
@@ -91,11 +105,16 @@ class SignUp extends Component {
             placeholderTextColor="gray"
             allowFontScaling={true}
             clearTextOnFocus={true}
-            onChangeText={(value) => this.setState({ username: value })}
+            onChangeText={(value) => {
+              this.setState({ username: value }, ()=>{
+                this.checkUserLength()
+              })
+            }}
             value={this.state.username}
             enablesReturnKeyAutomatically={true}
             autoCorrect={false}
             color='black'
+            maxLength={36}
           />
           <Text style={styles.words}>Password</Text>
           <Text style={styles.pwLength}>{this.state.pwAlert}</Text>
@@ -107,14 +126,16 @@ class SignUp extends Component {
             allowFontScaling={true}
             clearTextOnFocus={true}
             onChangeText={(value) => {
-              this.setState({ password1: value })
-              this.checkPwLength()
+              this.setState({ password1: value }, ()=>{
+                this.checkPwLength()
+              })
             }}
             value={this.state.password1}
             enablesReturnKeyAutomatically={true}
             autoCorrect={false}
             color='black'
             secureTextEntry={true}
+            maxLength={254}
           />
           <TextInput
             style={styles.input}
@@ -129,6 +150,7 @@ class SignUp extends Component {
             autoCorrect={false}
             color='black'
             secureTextEntry={true}
+            maxLength={254}
           />
           <Text style={styles.words}>Email Address</Text>
           <TextInput
@@ -144,6 +166,7 @@ class SignUp extends Component {
             autoCorrect={false}
             color='black'
             keyboardType='email-address'
+            maxLength={254}
           />
         </View>
         <View style={styles.buttonContainer}>
