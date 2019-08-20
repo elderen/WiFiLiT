@@ -70,25 +70,29 @@ class SignUp extends Component {
   onSubmit = async () => {
     let pwBool = this.checkPw()
     // if passwords match
-    if (pwBool === true) {
-      // if password length is less than 6
-      if (this.state.password1.length < 6) {
-        Alert.alert('Password must be more than 6 characters')
-      } else {
-        let emailBool = this.validate()
-        // if email is in correct format
-        if (emailBool === true) {
-          let data = { username: this.state.username, password: this.state.password }
-          await socket.emit('signup', data)
-          socket.on('newUser', (data) => {
-            Alert.alert('new user created')
-          })
+    if (this.state.username.length >= 4) {
+      if (pwBool === true) {
+        // if password length is less than 6
+        if (this.state.password1.length < 6) {
+          Alert.alert('Password must be more than 6 characters')
         } else {
-          Alert.alert("Need to enter valid Email")
+          let emailBool = this.validate()
+          // if email is in correct format
+          if (emailBool === true) {
+            let data = { username: this.state.username, password: this.state.password }
+            await socket.emit('signup', data)
+            socket.on('newUser', (data) => {
+              Alert.alert('new user created')
+            })
+          } else {
+            Alert.alert("Need to enter valid Email")
+          }
         }
+      } else {
+        Alert.alert("Passwords must be the same")
       }
     } else {
-      Alert.alert("Passwords must be the same")
+      Alert.alert("Username must be at least 4 characters")
     }
   }
 
