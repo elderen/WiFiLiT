@@ -19,7 +19,7 @@ class Authentication extends Component {
     this.loadApp()
   }
   loadApp = async () => {
-    const userToken = await AsyncStorage.getItem('Token')
+    const userToken = await AsyncStorage.getItem('isLoggedIn')
     this.props.navigation.navigate(userToken ? 'App' : 'Auth')
   }
 
@@ -39,10 +39,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: 'white',
   },
   words: {
-    color: 'white',
+    color: 'orange',
     margin: 18,
     fontSize: 18
   }

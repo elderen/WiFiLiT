@@ -4,10 +4,13 @@ import { View, Text, StyleSheet } from 'react-native';
 
 // create a component
 class PasswordHelp extends Component {
+  static navigationOptions = {
+    headerTitle: 'Forgot Your Password?'
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Forgot your Password?</Text>
+        <Text>Too Bad</Text>
       </View>
     );
   }

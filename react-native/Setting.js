@@ -18,7 +18,7 @@ class Setting extends Component {
   }
 
   onSubmit = async () => {
-    await AsyncStorage.removeItem('Token')
+    await AsyncStorage.removeItem('isLoggedIn')
     this.props.navigation.navigate('AuthLoading')
   }
 

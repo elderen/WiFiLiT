@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Button, View, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { Button, View, Text, StyleSheet, TextInput, Image, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { withNavigation } from 'react-navigation';
+import io from 'socket.io-client/dist/socket.io';
+
+const userInfo = { username: 'Admin', password: 'Pass' }
 
 class Home extends Component {
   static navigationOptions = {
@@ -14,11 +16,24 @@ class Home extends Component {
       password: ''
     }
     this.onSubmit = this.onSubmit.bind(this);
+    this.authenticate = this.authenticate.bind(this);
+    socket = io('http://localhost:3000')
+  }
+
+  authenticate = async () => {
+    let data = { username: this.state.username, password: this.state.password }
+    socket.emit('signin', data)
   }
 
   onSubmit = async () => {
-    await AsyncStorage.setItem('Token', this.state.username);
-    this.props.navigation.navigate('Lobby', {username: this.state.username})
+    // if user and password combination exists in server database
+    this.authenticate()
+    if (userInfo.username === this.state.username && userInfo.password === this.state.password) {
+      await AsyncStorage.setItem('isLoggedIn', 1);
+      this.props.navigation.navigate('Lobby', { username: this.state.username })
+    } else {
+      Alert.alert('Username or Password is incorrect')
+    }
   }
 
   render() {
@@ -39,6 +54,7 @@ class Home extends Component {
             allowFontScaling={true}
             clearTextOnFocus={true}
             onChangeText={(value) => this.setState({ username: value })}
+            value={this.state.username}
             enablesReturnKeyAutomatically={true}
             autoCorrect={false}
             color='black'
@@ -52,6 +68,7 @@ class Home extends Component {
             allowFontScaling={true}
             clearTextOnFocus={true}
             onChangeText={(value) => this.setState({ password: value })}
+            value={this.state.password}
             enablesReturnKeyAutomatically={true}
             autoCorrect={false}
             color='black'
@@ -68,7 +85,7 @@ class Home extends Component {
           <View>
             <Button
               title="Sign Up"
-              onPress={() => { this.props.navigation.navigate('SignIn', { username: this.state.username, password: this.state.password }) }}
+              onPress={() => { this.props.navigation.navigate('SignUp') }}
               color="red"
             />
             <Button
@@ -121,4 +138,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withNavigation(Home)
+export default Home

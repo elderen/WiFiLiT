@@ -5,7 +5,7 @@ import { createStackNavigator, createAppContainer, createDrawerNavigator, create
 import Loading from './Loading'
 import Authentication from './Authentication'
 import Home from './Home'
-import SignIn from './SignIn'
+import SignUp from './SignUp'
 import Register from './Register'
 import Lobby from './Lobby'
 import PasswordHelp from './PasswordHelp'
@@ -17,8 +17,7 @@ import PrivateChat from './PrivateChat'
 const StackNavigator = createStackNavigator(
   {
     Welcome: Home,
-    SignIn: SignIn,
-    SignUp: Register,
+    SignUp: SignUp,
     Password: PasswordHelp
   },
   {

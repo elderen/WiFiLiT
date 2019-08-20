@@ -30,8 +30,8 @@ export default class LobbyChat extends React.Component {
 
     // Different Sockets
     // socket = io("https://wich.herokuapp.com/");
-    socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
-    // socket = io('http://localhost:3000')
+    // socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
+    socket = io('http://localhost:3000')
   }
 
   componentDidMount() {
