@@ -6,8 +6,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 // create a component
 class Setting extends Component {
   static navigationOptions = {
-    title: 'Setting',
-  };
+    headerTitle: 'Settings'
+  }
   constructor(props) {
     super(props);
     this.state = {

@@ -151,6 +151,7 @@ class SignUp extends Component {
             color='black'
             secureTextEntry={true}
             maxLength={254}
+            autoCapitalize="none"
           />
           <TextInput
             ref={(input) => { this.password2TextInput = input; }}
@@ -167,6 +168,7 @@ class SignUp extends Component {
             color='black'
             secureTextEntry={true}
             maxLength={254}
+            autoCapitalize="none"
           />
           <Text style={styles.words}>Email Address</Text>
           <TextInput
@@ -183,6 +185,7 @@ class SignUp extends Component {
             color='black'
             keyboardType='email-address'
             maxLength={254}
+            autoCapitalize="none"
           />
         </View>
         <View style={styles.buttonContainer}>

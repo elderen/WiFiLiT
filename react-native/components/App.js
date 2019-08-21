@@ -6,9 +6,6 @@ import LobbyChat from './lobbyChat.js'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      name: this.props.username,
-    };
   }
 
   render() {
@@ -19,7 +16,7 @@ export default class App extends React.Component {
           style={{ width: '100%', height: '100%' }}
           resizeMode='repeat'
         >
-          <LobbyChat name={this.state.name} />
+          <LobbyChat />
         </ImageBackground>
       </View>
     );

@@ -41,7 +41,7 @@ const SwipeableNavigator = createMaterialTopTabNavigator(
     Right: PrivateChat,
   },
   {
-    unmountInactiveRoutes: true,
+    // unmountInactiveRoutes: true,
     initialRouteName: "Left",
     swipeEnabled: true,
     tabBarOptions: {
@@ -57,7 +57,7 @@ const SwitchNavigator = createSwitchNavigator(
     App: SwipeableNavigator
   },
   {
-    unmountInactiveRoutes: true,
+    // unmountInactiveRoutes: true,
     initialRouteName: 'AuthLoading'
   }
 )

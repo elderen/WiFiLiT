@@ -3,8 +3,6 @@ import { Button, View, Text, StyleSheet, TextInput, Image, Alert } from 'react-n
 import AsyncStorage from '@react-native-community/async-storage';
 import io from 'socket.io-client/dist/socket.io';
 
-const userInfo = { username: 'Admin', password: 'Pass' }
-
 class Home extends Component {
   static navigationOptions = {
     header: null
@@ -12,7 +10,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'Anon',
+      username: '',
       password: '',
     }
     this.onSubmit = this.onSubmit.bind(this);
@@ -25,8 +23,8 @@ class Home extends Component {
     await socket.emit('signin', data)
     socket.on('loginResult', async (loginResult) => {
       if (loginResult === "allow") {
-        await AsyncStorage.setItem('isLoggedIn', 1);
-        this.props.navigation.navigate('Lobby', { username: this.state.username })
+        await AsyncStorage.setItem('isLoggedIn', this.state.username);
+        this.props.navigation.navigate('Lobby')
       } else {
         Alert.alert(loginResult)
       }
@@ -75,6 +73,7 @@ class Home extends Component {
             autoCorrect={false}
             color='black'
             secureTextEntry={true}
+            autoCapitalize="none"
           />
         </View>
         <View>

@@ -1,7 +1,8 @@
-//import liraries
+//import libraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, NavigationEvents, Alert } from 'react-native';
 import App from './components/App'
+import AsyncStorage from '@react-native-community/async-storage';
 
 // create a component
 class Lobby extends Component {
@@ -10,11 +11,29 @@ class Lobby extends Component {
       display: 'none'
     }
   }
+  constructor(props) {
+    super(props);
+    this.state = ({
+      username: 'Anon'
+    })
+    this.getUsernameAsyncStorage = this.getUsernameAsyncStorage.bind(this)
+  }
+ 
+  async getUsernameAsyncStorage() {
+    try {
+      let value = await AsyncStorage.getItem("isLoggedIn")
+      await this.setState({
+        username: value
+      })
+    } catch (err) {
+      Alert.alert('Error Fetching AsyncStorage User Info')
+    }
+  }
 
   render() {
     return (
       <View style={styles.container}>
-        <App username={this.props.navigation.state.params}/>
+        <App />
       </View>
     );
   }

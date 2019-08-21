@@ -5,6 +5,7 @@ import io from 'socket.io-client/dist/socket.io';
 import { NetworkInfo } from "react-native-network-info";
 import NetInfo from "@react-native-community/netinfo";
 import TopMessage from './topMessage';
+import AsyncStorage from '@react-native-community/async-storage';
 
 console.ignoredYellowBox = ['Remote debugger'];
 YellowBox.ignoreWarnings([
@@ -14,6 +15,7 @@ YellowBox.ignoreWarnings([
 
 export default class LobbyChat extends React.Component {
   state = {
+    username: '',
     message: '',
     sock: 'no socket connection',
     logs: [],
@@ -27,11 +29,22 @@ export default class LobbyChat extends React.Component {
     // Function Binds
     this.onSubmit = this.onSubmit.bind(this)
     this.getNetworkInfo = this.getNetworkInfo.bind(this);
+    this.getUsername = this.getUsername.bind(this)
 
     // Different Sockets
     // socket = io("https://wich.herokuapp.com/");
     // socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
     socket = io('http://localhost:3000')
+  }
+  async getUsername() {
+    try {
+      let value = await AsyncStorage.getItem("isLoggedIn")
+      await this.setState({
+        username: value
+      })
+    } catch (err) {
+      Alert.alert('Error Fetching AsyncStorage User Info')
+    }
   }
 
   componentDidMount() {
@@ -51,6 +64,7 @@ export default class LobbyChat extends React.Component {
         }
       }
     );
+    this.getUsername()
   }
 
   async getNetworkInfo() {
@@ -80,7 +94,7 @@ export default class LobbyChat extends React.Component {
 
   onSubmit() {
 
-    let newLog = { 'user': this.props.name, 'room': this.state.ss, 'message': this.state.message }
+    let newLog = { 'user': this.state.username, 'room': this.state.ss, 'message': this.state.message }
     socket.send(newLog, this.state.ss, () => {
       socket.on('update', (msg) => { this.setState({ logs: msg }) })
     })
@@ -126,7 +140,7 @@ export default class LobbyChat extends React.Component {
             style={styles.textBox}
             multiline={false}
             value={this.state.message}
-            placeholder={`Write something LIT ${this.props.name}!`}
+            placeholder={`Write something LIT ${this.state.username}!`}
             placeholderTextColor="lightgray"
             allowFontScaling={true}
             clearTextOnFocus={true}
