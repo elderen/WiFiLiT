@@ -15,7 +15,8 @@ class Home extends Component {
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.authenticate = this.authenticate.bind(this);
-    socket = io('http://localhost:3000')
+    // socket = io('http://localhost:3000')
+    socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
   }
 
   authenticate = async () => {

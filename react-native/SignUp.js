@@ -22,7 +22,8 @@ class SignUp extends Component {
     this.checkPw = this.checkPw.bind(this);
     this.validate = this.validate.bind(this);
     this.checkPwLength = this.checkPwLength.bind(this);
-    socket = io('http://localhost:3000')
+    // socket = io('http://localhost:3000')
+    socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
   }
 
   checkPwLength() {
