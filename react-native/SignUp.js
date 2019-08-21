@@ -26,7 +26,7 @@ class SignUp extends Component {
   }
 
   checkPwLength() {
-    if (this.state.password1.length < 6) {
+    if (this.state.password1.length < 6 && this.state.password1.length !== 0) {
       this.setState({
         pwAlert: "Password must be at least 6 characters"
       })
@@ -38,7 +38,7 @@ class SignUp extends Component {
   }
 
   checkUserLength() {
-    if (this.state.username.length < 4) {
+    if (this.state.username.length < 4 && this.state.username.length !== 0) {
       this.setState({
         userAlert: "Username must be at least 4 characters"
       })
@@ -79,10 +79,18 @@ class SignUp extends Component {
           let emailBool = this.validate()
           // if email is in correct format
           if (emailBool === true) {
-            let data = { username: this.state.username, password: this.state.password }
+            // if EVERYTHING is correct, then send request to server to create new user
+            let data = { username: this.state.username, password: this.state.password1 }
             await socket.emit('signup', data)
-            socket.on('newUser', (data) => {
-              Alert.alert('new user created')
+            socket.on('newUser', (userData) => {
+              // if bool = 0 then data bool was true and new user was created
+              if (userData.bool === 'true') {
+                Alert.alert(`Welcome ${userData.username}`, 'New user successfully created')
+                this.props.navigation.navigate('AuthLoading')
+              } else if (userData.bool === 'false') {
+                Alert.alert("Failed", `Username "${userData.username}" is already taken!`)
+                this.usernameTextInput.focus()
+              }
             })
           } else {
             Alert.alert("Need to enter valid Email")
@@ -90,6 +98,7 @@ class SignUp extends Component {
         }
       } else {
         Alert.alert("Passwords must be the same")
+        this.password1TextInput.focus()
       }
     } else {
       Alert.alert("Username must be at least 4 characters")
@@ -103,14 +112,15 @@ class SignUp extends Component {
           <Text style={styles.words}>Username</Text>
           <Text style={styles.pwLength}>{this.state.userAlert}</Text>
           <TextInput
+            ref={(input) => { this.usernameTextInput = input; }}
             style={styles.input}
             multiline={false}
             placeholder={`Username`}
             placeholderTextColor="gray"
             allowFontScaling={true}
-            clearTextOnFocus={true}
+            clearTextOnFocus={false}
             onChangeText={(value) => {
-              this.setState({ username: value }, ()=>{
+              this.setState({ username: value }, () => {
                 this.checkUserLength()
               })
             }}
@@ -123,6 +133,7 @@ class SignUp extends Component {
           <Text style={styles.words}>Password</Text>
           <Text style={styles.pwLength}>{this.state.pwAlert}</Text>
           <TextInput
+            ref={(input) => { this.password1TextInput = input; }}
             style={styles.input}
             multiline={false}
             placeholder={`Password`}
@@ -130,7 +141,7 @@ class SignUp extends Component {
             allowFontScaling={true}
             clearTextOnFocus={true}
             onChangeText={(value) => {
-              this.setState({ password1: value }, ()=>{
+              this.setState({ password1: value }, () => {
                 this.checkPwLength()
               })
             }}
@@ -142,6 +153,7 @@ class SignUp extends Component {
             maxLength={254}
           />
           <TextInput
+            ref={(input) => { this.password2TextInput = input; }}
             style={styles.input}
             multiline={false}
             placeholder={`Confirm Password`}
@@ -150,8 +162,8 @@ class SignUp extends Component {
             clearTextOnFocus={true}
             onChangeText={(value) => this.setState({ password2: value })}
             value={this.state.password2}
-            enablesReturnKeyAutomatically={true}
             autoCorrect={false}
+            enablesReturnKeyAutomatically={true}
             color='black'
             secureTextEntry={true}
             maxLength={254}

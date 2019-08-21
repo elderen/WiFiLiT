@@ -13,7 +13,7 @@ class Home extends Component {
     super(props);
     this.state = {
       username: 'Anon',
-      password: ''
+      password: '',
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.authenticate = this.authenticate.bind(this);
@@ -22,18 +22,20 @@ class Home extends Component {
 
   authenticate = async () => {
     let data = { username: this.state.username, password: this.state.password }
-    socket.emit('signin', data)
+    await socket.emit('signin', data)
+    socket.on('loginResult', async (loginResult) => {
+      if (loginResult === "allow") {
+        await AsyncStorage.setItem('isLoggedIn', 1);
+        this.props.navigation.navigate('Lobby', { username: this.state.username })
+      } else {
+        Alert.alert(loginResult)
+      }
+    })
   }
 
   onSubmit = async () => {
     // if user and password combination exists in server database
-    this.authenticate()
-    if (userInfo.username === this.state.username && userInfo.password === this.state.password) {
-      await AsyncStorage.setItem('isLoggedIn', 1);
-      this.props.navigation.navigate('Lobby', { username: this.state.username })
-    } else {
-      Alert.alert('Username or Password is incorrect')
-    }
+    await this.authenticate()
   }
 
   render() {
@@ -72,6 +74,7 @@ class Home extends Component {
             enablesReturnKeyAutomatically={true}
             autoCorrect={false}
             color='black'
+            secureTextEntry={true}
           />
         </View>
         <View>
