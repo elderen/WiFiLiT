@@ -44,7 +44,7 @@ class Home extends Component {
         <KeyboardAvoidingView style={styles.container} behavior="padding">
           <Image
             style={styles.image}
-            source={require('./images/logo.png')}
+            source={require('./images/iconBlack.png')}
           />
           <Text style={styles.title}>WiFi LiT</Text>
 
@@ -62,9 +62,10 @@ class Home extends Component {
               value={this.state.username}
               enablesReturnKeyAutomatically={true}
               autoCorrect={false}
-              color='black'
+              color='gold'
               autoCapitalize="none"
               keyboardAppearance="dark"
+              fontWeight="bold"
             />
           </View>
           <View style={styles.inputContainer}>
@@ -81,10 +82,11 @@ class Home extends Component {
               value={this.state.password}
               enablesReturnKeyAutomatically={true}
               autoCorrect={false}
-              color='black'
+              color='gold'
               secureTextEntry={true}
               autoCapitalize="none"
               keyboardAppearance="dark"
+              fontWeight="bold"
             />
           </View>
           <View>
@@ -99,12 +101,13 @@ class Home extends Component {
               <Button
                 title="Sign Up"
                 onPress={() => { this.props.navigation.navigate('SignUp') }}
-                color="red"
+                color="whitesmoke"
+                fontSize="large"
               />
               <Button
                 title="Forgot Password?"
                 onPress={() => { this.props.navigation.navigate('Password') }}
-                color="red"
+                color="whitesmoke"
               />
             </View>
           </View>
@@ -117,46 +120,47 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center'
   },
   image: {
     width: 360,
     height: 360,
-    borderColor: 'black',
-    borderWidth: 1,
+    margin: 0,
+    padding: 0
+    // borderColor: 'black',
+    // borderWidth: 1,
   },
   title: {
-    color: 'gold',
-    fontSize: 50,
+    color: 'white',
+    fontSize: 60,
     fontWeight: 'bold',
-    borderColor: 'black',
-    borderWidth: 1,
+    margin: 0,
+    padding: 0
+    // borderColor: 'black',
+    // borderWidth: 1,
   },
   inputContainer: {
     width: '80%',
     margin: 0,
     padding: 0,
-    borderColor: 'black',
-    borderWidth: 1,
   },
   input: {
-    borderColor: 'black',
-    borderWidth: 1,
+    borderColor: 'whitesmoke',
+    borderWidth: 3,
     margin: 5,
     padding: 10
   },
   button: {
     margin: 15,
-    backgroundColor: "darkorange",
+    backgroundColor: "black",
     alignSelf: 'center',
-    margin: 3,
     borderRadius: 14,
     padding: 1,
     width: 120,
-    borderColor: 'black',
-    borderWidth: 1,
+    borderColor: 'darkorange',
+    borderWidth: 3,
   }
 });
 
