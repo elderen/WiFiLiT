@@ -5,12 +5,16 @@ import { View, Text, StyleSheet } from 'react-native';
 // create a component
 class Profile extends Component {
   static navigationOptions = {
-    title: 'Profile'
+    title: 'Profile',
+    headerTintColor: 'white',
+    headerStyle: {
+      backgroundColor: 'black'
+    }
   };
   render() {
     return (
       <View style={styles.container}>
-        <Text>Profile</Text>
+        <Text style={styles.words}>Profile</Text>
       </View>
     );
   }
@@ -22,8 +26,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   },
+  words: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
 });
 
 //make this component available to the app

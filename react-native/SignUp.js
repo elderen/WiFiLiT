@@ -6,7 +6,11 @@ import io from 'socket.io-client/dist/socket.io';
 // create a component
 class SignUp extends Component {
   static navigationOptions = {
-    headerTitle: 'Sign Up'
+    headerTitle: 'Sign Up',
+    headerTintColor: 'white',
+    headerStyle: {
+      backgroundColor: 'black'
+    }
   }
   constructor(props) {
     super(props);
@@ -217,7 +221,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   },
   inputContainer: {
     width: '90%',
@@ -232,7 +236,8 @@ const styles = StyleSheet.create({
     margin: 5,
     marginTop: 20,
     fontSize: 18,
-    color: 'red'
+    color: 'white',
+    fontWeight: 'bold'
   },
   buttonContainer: {
     margin: 20

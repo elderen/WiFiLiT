@@ -6,7 +6,11 @@ import AsyncStorage from '@react-native-community/async-storage';
 // create a component
 class Setting extends Component {
   static navigationOptions = {
-    headerTitle: 'Settings'
+    headerTitle: 'Settings',
+    headerTintColor: 'white',
+    headerStyle: {
+      backgroundColor: 'black'
+    }
   }
   constructor(props) {
     super(props);
@@ -25,11 +29,11 @@ class Setting extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Setting</Text>
+        <Text style={styles.words}>Setting</Text>
         <Button
           title="Log Out"
           onPress={() => {this.onSubmit()}}
-          color="black"
+          color="white"
         />
       </View>
     );
@@ -42,8 +46,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   },
+  words: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
 });
 
 //make this component available to the app

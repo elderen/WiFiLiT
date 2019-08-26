@@ -6,11 +6,15 @@ import { View, Text, StyleSheet } from 'react-native';
 class PrivateChat extends Component {
   static navigationOptions = {
     title: 'Private Messages',
+    headerTintColor: 'white',
+    headerStyle: {
+      backgroundColor: 'black'
+    }
   };
   render() {
     return (
       <View style={styles.container}>
-        <Text>Private Chat</Text>
+        <Text style={styles.words}>Private Chat</Text>
       </View>
     );
   }
@@ -22,8 +26,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   },
+  words: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
 });
 
 //make this component available to the app

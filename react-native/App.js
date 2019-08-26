@@ -45,7 +45,7 @@ const SwipeableNavigator = createMaterialTopTabNavigator(
     initialRouteName: "Left",
     swipeEnabled: true,
     tabBarOptions: {
-      style: { display: "none" }
+      style: { display: 'none' }
     },
   }
 );
