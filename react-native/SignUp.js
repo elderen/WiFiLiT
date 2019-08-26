@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button, Alert, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
 import io from 'socket.io-client/dist/socket.io';
 
 // create a component
@@ -108,97 +108,105 @@ class SignUp extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <Text style={styles.words}>Username</Text>
-          <Text style={styles.pwLength}>{this.state.userAlert}</Text>
-          <TextInput
-            ref={(input) => { this.usernameTextInput = input; }}
-            style={styles.input}
-            multiline={false}
-            placeholder={`Username`}
-            placeholderTextColor="gray"
-            allowFontScaling={true}
-            clearTextOnFocus={false}
-            onChangeText={(value) => {
-              this.setState({ username: value }, () => {
-                this.checkUserLength()
-              })
-            }}
-            value={this.state.username}
-            enablesReturnKeyAutomatically={true}
-            autoCorrect={false}
-            color='black'
-            maxLength={36}
-          />
-          <Text style={styles.words}>Password</Text>
-          <Text style={styles.pwLength}>{this.state.pwAlert}</Text>
-          <TextInput
-            ref={(input) => { this.password1TextInput = input; }}
-            style={styles.input}
-            multiline={false}
-            placeholder={`Password`}
-            placeholderTextColor="gray"
-            allowFontScaling={true}
-            clearTextOnFocus={true}
-            onChangeText={(value) => {
-              this.setState({ password1: value }, () => {
-                this.checkPwLength()
-              })
-            }}
-            value={this.state.password1}
-            enablesReturnKeyAutomatically={true}
-            autoCorrect={false}
-            color='black'
-            secureTextEntry={true}
-            maxLength={254}
-            autoCapitalize="none"
-          />
-          <TextInput
-            ref={(input) => { this.password2TextInput = input; }}
-            style={styles.input}
-            multiline={false}
-            placeholder={`Confirm Password`}
-            placeholderTextColor="gray"
-            allowFontScaling={true}
-            clearTextOnFocus={true}
-            onChangeText={(value) => this.setState({ password2: value })}
-            value={this.state.password2}
-            autoCorrect={false}
-            enablesReturnKeyAutomatically={true}
-            color='black'
-            secureTextEntry={true}
-            maxLength={254}
-            autoCapitalize="none"
-          />
-          <Text style={styles.words}>Email Address</Text>
-          <TextInput
-            style={styles.input}
-            multiline={false}
-            placeholder={`Email Address`}
-            placeholderTextColor="gray"
-            allowFontScaling={true}
-            clearTextOnFocus={true}
-            onChangeText={(value) => this.setState({ email: value })}
-            value={this.state.email}
-            enablesReturnKeyAutomatically={true}
-            autoCorrect={false}
-            color='black'
-            keyboardType='email-address'
-            maxLength={254}
-            autoCapitalize="none"
-          />
-        </View>
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button
-              title="Create New Account"
-              onPress={() => { this.onSubmit() }}
-              color="white"
+      <TouchableWithoutFeedback
+        onPress={Keyboard.dismiss}>
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
+          <View style={styles.inputContainer}>
+            <Text style={styles.words}>Username</Text>
+            <Text style={styles.pwLength}>{this.state.userAlert}</Text>
+            <TextInput
+              ref={(input) => { this.usernameTextInput = input; }}
+              style={styles.input}
+              multiline={false}
+              placeholder={`Username`}
+              placeholderTextColor="gray"
+              allowFontScaling={true}
+              clearTextOnFocus={false}
+              onChangeText={(value) => {
+                this.setState({ username: value }, () => {
+                  this.checkUserLength()
+                })
+              }}
+              value={this.state.username}
+              enablesReturnKeyAutomatically={true}
+              autoCorrect={false}
+              color='black'
+              maxLength={36}
+              autoCapitalize="none"
+              keyboardAppearance="dark"
+            />
+            <Text style={styles.words}>Password</Text>
+            <Text style={styles.pwLength}>{this.state.pwAlert}</Text>
+            <TextInput
+              ref={(input) => { this.password1TextInput = input; }}
+              style={styles.input}
+              multiline={false}
+              placeholder={`Password`}
+              placeholderTextColor="gray"
+              allowFontScaling={true}
+              clearTextOnFocus={true}
+              onChangeText={(value) => {
+                this.setState({ password1: value }, () => {
+                  this.checkPwLength()
+                })
+              }}
+              value={this.state.password1}
+              enablesReturnKeyAutomatically={true}
+              autoCorrect={false}
+              color='black'
+              secureTextEntry={true}
+              maxLength={254}
+              autoCapitalize="none"
+              keyboardAppearance="dark"
+            />
+            <TextInput
+              ref={(input) => { this.password2TextInput = input; }}
+              style={styles.input}
+              multiline={false}
+              placeholder={`Confirm Password`}
+              placeholderTextColor="gray"
+              allowFontScaling={true}
+              clearTextOnFocus={true}
+              onChangeText={(value) => this.setState({ password2: value })}
+              value={this.state.password2}
+              autoCorrect={false}
+              enablesReturnKeyAutomatically={true}
+              color='black'
+              secureTextEntry={true}
+              maxLength={254}
+              autoCapitalize="none"
+              keyboardAppearance="dark"
+            />
+            <Text style={styles.words}>Email Address</Text>
+            <TextInput
+              style={styles.input}
+              multiline={false}
+              placeholder={`Email Address`}
+              placeholderTextColor="gray"
+              allowFontScaling={true}
+              clearTextOnFocus={true}
+              onChangeText={(value) => this.setState({ email: value })}
+              value={this.state.email}
+              enablesReturnKeyAutomatically={true}
+              autoCorrect={false}
+              color='black'
+              keyboardType='email-address'
+              maxLength={254}
+              autoCapitalize="none"
+              keyboardAppearance="dark"
             />
           </View>
-        </View>
-      </View>
+          <View style={styles.buttonContainer}>
+            <View style={styles.button}>
+              <Button
+                title="Create New Account"
+                onPress={() => { this.onSubmit() }}
+                color="white"
+              />
+            </View>
+          </View>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     );
   }
 }

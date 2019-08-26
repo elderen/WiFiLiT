@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, Text, StyleSheet, TextInput, Image, Alert } from 'react-native';
+import { Keyboard, Button, View, Text, StyleSheet, TextInput, Image, Alert, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import io from 'socket.io-client/dist/socket.io';
 
@@ -39,66 +39,77 @@ class Home extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={require('./images/logo.png')}
-        />
-        <Text style={styles.title}>WiFi LiT</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            multiline={false}
-            value={this.state.message}
-            placeholder={`Username`}
-            placeholderTextColor="lightgray"
-            allowFontScaling={true}
-            clearTextOnFocus={true}
-            onChangeText={(value) => this.setState({ username: value })}
-            value={this.state.username}
-            enablesReturnKeyAutomatically={true}
-            autoCorrect={false}
-            color='black'
+      <TouchableWithoutFeedback
+        onPress={Keyboard.dismiss}>
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
+          <Image
+            style={styles.image}
+            source={require('./images/logo.png')}
           />
-          <TextInput
-            style={styles.input}
-            multiline={false}
-            value={this.state.message}
-            placeholder={`Password`}
-            placeholderTextColor="lightgray"
-            allowFontScaling={true}
-            clearTextOnFocus={true}
-            onChangeText={(value) => this.setState({ password: value })}
-            value={this.state.password}
-            enablesReturnKeyAutomatically={true}
-            autoCorrect={false}
-            color='black'
-            secureTextEntry={true}
-            autoCapitalize="none"
-          />
-        </View>
-        <View>
-          <View style={styles.button}>
-            <Button
-              title="Login"
-              onPress={() => { this.onSubmit() }}
-              color="white"
+          <Text style={styles.title}>WiFi LiT</Text>
+
+          <View style={styles.inputContainer}>
+            <TextInput
+              ref={ref => this.usernameInput = ref}
+              style={styles.input}
+              multiline={false}
+              value={this.state.message}
+              placeholder={`Username`}
+              placeholderTextColor="lightgray"
+              allowFontScaling={true}
+              clearTextOnFocus={true}
+              onChangeText={(value) => this.setState({ username: value })}
+              value={this.state.username}
+              enablesReturnKeyAutomatically={true}
+              autoCorrect={false}
+              color='black'
+              autoCapitalize="none"
+              keyboardAppearance="dark"
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <TextInput
+              ref={ref => this.passwordInput = ref}
+              style={styles.input}
+              multiline={false}
+              value={this.state.message}
+              placeholder={`Password`}
+              placeholderTextColor="lightgray"
+              allowFontScaling={true}
+              clearTextOnFocus={true}
+              onChangeText={(value) => this.setState({ password: value })}
+              value={this.state.password}
+              enablesReturnKeyAutomatically={true}
+              autoCorrect={false}
+              color='black'
+              secureTextEntry={true}
+              autoCapitalize="none"
+              keyboardAppearance="dark"
             />
           </View>
           <View>
-            <Button
-              title="Sign Up"
-              onPress={() => { this.props.navigation.navigate('SignUp') }}
-              color="red"
-            />
-            <Button
-              title="Forgot Password?"
-              onPress={() => { this.props.navigation.navigate('Password') }}
-              color="red"
-            />
+            <View style={styles.button}>
+              <Button
+                title="Login"
+                onPress={() => { this.onSubmit() }}
+                color="white"
+              />
+            </View>
+            <View>
+              <Button
+                title="Sign Up"
+                onPress={() => { this.props.navigation.navigate('SignUp') }}
+                color="red"
+              />
+              <Button
+                title="Forgot Password?"
+                onPress={() => { this.props.navigation.navigate('Password') }}
+                color="red"
+              />
+            </View>
           </View>
-        </View>
-      </View>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -111,18 +122,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   image: {
-    width: 400,
-    height: 400
+    width: 360,
+    height: 360,
+    borderColor: 'black',
+    borderWidth: 1,
   },
   title: {
     color: 'gold',
-    fontSize: 60,
+    fontSize: 50,
     fontWeight: 'bold',
-    // borderColor: 'black',
-    // borderWidth: 1,
+    borderColor: 'black',
+    borderWidth: 1,
   },
   inputContainer: {
     width: '80%',
+    margin: 0,
+    padding: 0,
+    borderColor: 'black',
+    borderWidth: 1,
   },
   input: {
     borderColor: 'black',
@@ -137,7 +154,9 @@ const styles = StyleSheet.create({
     margin: 3,
     borderRadius: 14,
     padding: 1,
-    width: 120
+    width: 120,
+    borderColor: 'black',
+    borderWidth: 1,
   }
 });
 

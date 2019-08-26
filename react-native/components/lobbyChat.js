@@ -1,6 +1,6 @@
 window.navigator.userAgent = 'react-native';
 import React from 'react';
-import { YellowBox, StyleSheet, Text, TextInput, View, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { YellowBox, StyleSheet, Text, TextInput, View, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import io from 'socket.io-client/dist/socket.io';
 import { NetworkInfo } from "react-native-network-info";
 import NetInfo from "@react-native-community/netinfo";
@@ -102,60 +102,63 @@ export default class LobbyChat extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <KeyboardAvoidingView style={styles.container} behavior="padding">
-
-          <View style={styles.header}>
-            <View style={{ height: "10%" }} />
-            <Text style={{
-              color: 'gold',
-              alignSelf: 'center',
-              fontWeight: 'bold',
-              fontSize: 40,
-              bottom: 0,
-              margin: 0,
-              padding: 0,
-            }}>WiFi LiT</Text>
-            {/* <Text style={styles.network}> {this.state.sock} </Text> */}
-            <Text style={styles.network}> {this.state.wifiBool}: {this.state.ss} </Text>
-            {/* <Text style={styles.network}> IP: {this.state.ip}  |  Broadcast: {this.state.bc} </Text> */}
-          </View>
-          <View style={styles.messagesView}>
-            <ScrollView
-              ref={ref => this.scrollView = ref}
-              onContentSizeChange={(contentWidth, contentHeight) => {
-                this.scrollView.scrollToEnd({ animated: true });
+      <TouchableWithoutFeedback
+        onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <KeyboardAvoidingView style={styles.container} behavior="padding">
+            <View style={styles.header}>
+              <View style={{ height: "10%" }} />
+              <Text style={{
+                color: 'gold',
+                alignSelf: 'center',
+                fontWeight: 'bold',
+                fontSize: 40,
+                bottom: 0,
+                margin: 0,
+                padding: 0,
+              }}>WiFi LiT</Text>
+              {/* <Text style={styles.network}> {this.state.sock} </Text> */}
+              <Text style={styles.network}> {this.state.wifiBool}: {this.state.ss} </Text>
+              {/* <Text style={styles.network}> IP: {this.state.ip}  |  Broadcast: {this.state.bc} </Text> */}
+            </View>
+            <View style={styles.messagesView}>
+              <ScrollView
+                ref={ref => this.scrollView = ref}
+                onContentSizeChange={(contentWidth, contentHeight) => {
+                  this.scrollView.scrollToEnd({ animated: true });
+                }}
+              >
+                <View style={styles.words}>
+                  {this.state.logs.map((obj, n) => {
+                    // return <View style={styles.message} key={n}><Text style={styles.messageText}>{obj.user}: {obj.message}</Text></View>
+                    return <TopMessage user={obj.user} message={obj.message} key={n} />
+                  })}
+                </View>
+              </ScrollView>
+            </View>
+            <TextInput
+              ref={input => { this.textInput = input }}
+              style={styles.textBox}
+              multiline={false}
+              value={this.state.message}
+              placeholder={`Write something LIT ${this.state.username}!`}
+              placeholderTextColor="lightgray"
+              allowFontScaling={true}
+              clearTextOnFocus={true}
+              onChangeText={(value) => this.setState({ message: value })}
+              onSubmitEditing={() => {
+                this.onSubmit()
+                this.textInput.clear()
               }}
-            >
-              <View style={styles.words}>
-                {this.state.logs.map((obj, n) => {
-                  // return <View style={styles.message} key={n}><Text style={styles.messageText}>{obj.user}: {obj.message}</Text></View>
-                  return <TopMessage user={obj.user} message={obj.message} key={n} />
-                })}
-              </View>
-            </ScrollView>
-          </View>
-          <TextInput
-            ref={input => { this.textInput = input }}
-            style={styles.textBox}
-            multiline={false}
-            value={this.state.message}
-            placeholder={`Write something LIT ${this.state.username}!`}
-            placeholderTextColor="lightgray"
-            allowFontScaling={true}
-            clearTextOnFocus={true}
-            onChangeText={(value) => this.setState({ message: value })}
-            onSubmitEditing={() => {
-              this.onSubmit()
-              this.textInput.clear()
-            }}
-            enablesReturnKeyAutomatically={true}
-            autoCorrect={false}
-            color='white'
-          />
+              enablesReturnKeyAutomatically={true}
+              autoCorrect={false}
+              color='white'
+              keyboardAppearance="dark"
+            />
 
-        </KeyboardAvoidingView>
-      </View>
+          </KeyboardAvoidingView>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
