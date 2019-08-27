@@ -8,7 +8,7 @@ import Home from './Home'
 import SignUp from './SignUp'
 import Register from './Register'
 import Lobby from './Lobby'
-import PasswordHelp from './PasswordHelp'
+import PasswordHelp from './PasswordHelp' 
 import Profile from './Profile'
 import Setting from './Setting'
 import PrivateChat from './PrivateChat'
@@ -31,8 +31,11 @@ const AppDrawerNavigator = createDrawerNavigator(
     Lobby: Lobby,
     Profile: Profile,
     Setting: Setting
-  }
-)
+  }, {
+    drawerPosition: 'left',
+    drawerBackgroundColor: 'darkgray',
+    overlayColor: 'black',
+})
 
 // Main App: Lobby and Private Chat
 const SwipeableNavigator = createMaterialTopTabNavigator(

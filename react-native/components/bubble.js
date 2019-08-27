@@ -20,7 +20,7 @@ export default class Bubble extends React.Component {
 const styles = StyleSheet.create({
   bubble: {
     alignSelf: 'baseline', 
-    backgroundColor: 'rgb(120,180,155)',
+    backgroundColor: 'whitesmoke',
     borderRadius: 12,
     borderWidth: 0.5,
     borderColor: 'black',
