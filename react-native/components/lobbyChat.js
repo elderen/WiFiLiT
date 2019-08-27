@@ -1,10 +1,11 @@
 window.navigator.userAgent = 'react-native';
 import React from 'react';
-import { YellowBox, StyleSheet, Text, TextInput, View, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { YellowBox, StyleSheet, Text, TextInput, View, KeyboardAvoidingView } from 'react-native';
 import { NetworkInfo } from "react-native-network-info";
 import NetInfo from "@react-native-community/netinfo";
 import TopMessage from './topMessage';
 import AsyncStorage from '@react-native-community/async-storage';
+import { ScrollView } from "react-navigation";
 
 console.ignoredYellowBox = ['Remote debugger'];
 YellowBox.ignoreWarnings([
@@ -97,8 +98,6 @@ export default class LobbyChat extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback
-        onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <KeyboardAvoidingView style={styles.container} behavior="padding">
             <View style={styles.header}>
@@ -153,7 +152,6 @@ export default class LobbyChat extends React.Component {
 
           </KeyboardAvoidingView>
         </View>
-      </TouchableWithoutFeedback>
     );
   }
 }
