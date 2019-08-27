@@ -16,7 +16,7 @@ export default class App extends React.Component {
           style={{ width: '100%', height: '100%' }}
           resizeMode='repeat'
         >
-          <LobbyChat />
+          <LobbyChat socket={this.props.socket}/>
         </ImageBackground>
       </View>
     );

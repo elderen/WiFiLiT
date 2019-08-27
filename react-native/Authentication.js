@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   words: {
-    color: 'orange',
+    color: 'white',
     margin: 18,
     fontSize: 18
   }

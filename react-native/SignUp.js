@@ -1,17 +1,10 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Alert, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
-import io from 'socket.io-client/dist/socket.io';
+import SocketContext from './socket-context'
 
 // create a component
 class SignUp extends Component {
-  static navigationOptions = {
-    headerTitle: 'Sign Up',
-    headerTintColor: 'white',
-    headerStyle: {
-      backgroundColor: 'black'
-    }
-  }
   constructor(props) {
     super(props);
     this.state = {
@@ -26,8 +19,6 @@ class SignUp extends Component {
     this.checkPw = this.checkPw.bind(this);
     this.validate = this.validate.bind(this);
     this.checkPwLength = this.checkPwLength.bind(this);
-    // socket = io('http://localhost:3000')
-    socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
   }
 
   checkPwLength() {
@@ -86,8 +77,8 @@ class SignUp extends Component {
           if (emailBool === true) {
             // if EVERYTHING is correct, then send request to server to create new user
             let data = { username: this.state.username, password: this.state.password1 }
-            await socket.emit('signup', data)
-            socket.on('newUser', (userData) => {
+            await this.props.socket.emit('signup', data)
+            this.props.socket.on('newUser', (userData) => {
               // if bool = 0 then data bool was true and new user was created
               if (userData.bool === 'true') {
                 Alert.alert(`Welcome ${userData.username}`, 'New user successfully created')
@@ -134,7 +125,7 @@ class SignUp extends Component {
               value={this.state.username}
               enablesReturnKeyAutomatically={true}
               autoCorrect={false}
-              color='black'
+              color='gold'
               maxLength={36}
               autoCapitalize="none"
               keyboardAppearance="dark"
@@ -157,7 +148,7 @@ class SignUp extends Component {
               value={this.state.password1}
               enablesReturnKeyAutomatically={true}
               autoCorrect={false}
-              color='black'
+              color='gold'
               secureTextEntry={true}
               maxLength={254}
               autoCapitalize="none"
@@ -175,7 +166,7 @@ class SignUp extends Component {
               value={this.state.password2}
               autoCorrect={false}
               enablesReturnKeyAutomatically={true}
-              color='black'
+              color='gold'
               secureTextEntry={true}
               maxLength={254}
               autoCapitalize="none"
@@ -193,7 +184,7 @@ class SignUp extends Component {
               value={this.state.email}
               enablesReturnKeyAutomatically={true}
               autoCorrect={false}
-              color='black'
+              color='gold'
               keyboardType='email-address'
               maxLength={254}
               autoCapitalize="none"
@@ -256,5 +247,10 @@ const styles = StyleSheet.create({
   }
 });
 
-//make this component available to the app
-export default SignUp;
+const SignUpWithSocket = props => (
+  <SocketContext.Consumer>
+    {socket => <SignUp navigation={props.navigation} socket={socket}/>}
+  </SocketContext.Consumer>
+);
+
+export default SignUpWithSocket;

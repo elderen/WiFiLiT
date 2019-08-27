@@ -1,7 +1,6 @@
 window.navigator.userAgent = 'react-native';
 import React from 'react';
 import { YellowBox, StyleSheet, Text, TextInput, View, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import io from 'socket.io-client/dist/socket.io';
 import { NetworkInfo } from "react-native-network-info";
 import NetInfo from "@react-native-community/netinfo";
 import TopMessage from './topMessage';
@@ -31,10 +30,6 @@ export default class LobbyChat extends React.Component {
     this.getNetworkInfo = this.getNetworkInfo.bind(this);
     this.getUsername = this.getUsername.bind(this)
 
-    // Different Sockets
-    // socket = io("https://wich.herokuapp.com/");
-    socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
-    // socket = io('http://localhost:3000')
   }
   async getUsername() {
     try {
@@ -56,7 +51,7 @@ export default class LobbyChat extends React.Component {
           this.setState({
             wifiBool: 'WiFi Connected'
           })
-          socket.on('update', (msg) => { this.setState({ sock: 'Socket Server Connected', logs: msg }) })
+          this.props.socket.on('update', (msg) => { this.setState({ sock: 'Socket Server Connected', logs: msg }) })
         } else if (hasInternetConnection === false) {
           this.setState({
             wifiBool: 'No WiFi'
@@ -76,13 +71,13 @@ export default class LobbyChat extends React.Component {
       this.setState({
         ss: ssid
       }, () => {
-        socket.emit('ssid', this.state.ss)
+        this.props.socket.emit('ssid', this.state.ss)
       })
     } else {
       this.setState({
         ss: 'World Lobby'
       }, () => {
-        socket.emit('ssid', this.state.ss)
+        this.props.socket.emit('ssid', this.state.ss)
       })
     }
 
@@ -95,8 +90,8 @@ export default class LobbyChat extends React.Component {
   onSubmit() {
 
     let newLog = { 'user': this.state.username, 'room': this.state.ss, 'message': this.state.message }
-    socket.send(newLog, this.state.ss, () => {
-      socket.on('update', (msg) => { this.setState({ logs: msg }) })
+    this.props.socket.send(newLog, this.state.ss, () => {
+      this.props.socket.on('update', (msg) => { this.setState({ logs: msg }) })
     })
   }
 

@@ -1,8 +1,9 @@
 //import libraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, NavigationEvents, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import App from './components/App'
 import AsyncStorage from '@react-native-community/async-storage';
+import SocketContext from './socket-context'
 
 // create a component
 class Lobby extends Component {
@@ -33,7 +34,7 @@ class Lobby extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <App />
+        <App socket={this.props.socket}/>
       </View>
     );
   }
@@ -46,5 +47,10 @@ const styles = StyleSheet.create({
   },
 });
 
-//make this component available to the app
-export default Lobby
+const LobbyWithSocket = props => (
+  <SocketContext.Consumer>
+    {socket => <Lobby navigation={props.navigation} socket={socket}/>}
+  </SocketContext.Consumer>
+);
+
+export default LobbyWithSocket;

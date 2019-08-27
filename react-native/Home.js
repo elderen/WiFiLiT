@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { Keyboard, Button, View, Text, StyleSheet, TextInput, Image, Alert, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
+import { TouchableOpacity, Keyboard, Button, View, Text, StyleSheet, TextInput, Image, Alert, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import io from 'socket.io-client/dist/socket.io';
+import SocketContext from './socket-context'
 
 class Home extends Component {
-  static navigationOptions = {
-    header: null
-  }
   constructor(props) {
     super(props);
     this.state = {
@@ -15,14 +12,12 @@ class Home extends Component {
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.authenticate = this.authenticate.bind(this);
-    // socket = io('http://localhost:3000')
-    socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
   }
 
   authenticate = async () => {
     let data = { username: this.state.username, password: this.state.password }
-    await socket.emit('signin', data)
-    socket.on('loginResult', async (loginResult) => {
+    await this.props.socket.emit('signin', data)
+    this.props.socket.on('loginResult', async (loginResult) => {
       if (loginResult === "allow") {
         await AsyncStorage.setItem('isLoggedIn', this.state.username);
         this.props.navigation.navigate('Lobby')
@@ -97,18 +92,17 @@ class Home extends Component {
                 color="white"
               />
             </View>
+            <TouchableOpacity style={styles.options} onPress={()=>{this.props.navigation.navigate('SignUp')}}>
+              <Text style={styles.options}>
+                Sign Up
+              </Text>
+            </TouchableOpacity>
             <View>
-              <Button
-                title="Sign Up"
-                onPress={() => { this.props.navigation.navigate('SignUp') }}
-                color="whitesmoke"
-                fontSize="large"
-              />
-              <Button
-                title="Forgot Password?"
-                onPress={() => { this.props.navigation.navigate('Password') }}
-                color="whitesmoke"
-              />
+            <TouchableOpacity style={styles.options} onPress={()=>{this.props.navigation.navigate('Password')}}>
+              <Text style={styles.options}>
+                Forgot Password?
+              </Text>
+            </TouchableOpacity>
             </View>
           </View>
         </KeyboardAvoidingView>
@@ -161,7 +155,18 @@ const styles = StyleSheet.create({
     width: 120,
     borderColor: 'darkorange',
     borderWidth: 3,
+  },
+  options: {
+    color: 'whitesmoke',
+    alignSelf: 'center',
+    fontSize: 16
   }
 });
 
-export default Home
+const HomeWithSocket = props => (
+  <SocketContext.Consumer>
+    {socket => <Home navigation={props.navigation} socket={socket}/>}
+  </SocketContext.Consumer>
+);
+
+export default HomeWithSocket;

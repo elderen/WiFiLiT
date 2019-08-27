@@ -1,27 +1,46 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator, createMaterialTopTabNavigator, NavigationEvents } from "react-navigation";
-import Loading from './Loading'
+import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
 import Authentication from './Authentication'
-import Home from './Home'
-import SignUp from './SignUp'
-import Register from './Register'
+import HomeWithSocket from './Home'
+import SignUpWithSocket from './SignUp'
 import Lobby from './Lobby'
-import PasswordHelp from './PasswordHelp' 
+import PasswordHelp from './PasswordHelp'
 import Profile from './Profile'
 import Setting from './Setting'
 import PrivateChat from './PrivateChat'
+import SocketContext from './socket-context'
+import io from 'socket.io-client/dist/socket.io';
+
+// Single Socket instance shared throughout app
+// socket = io("https://wich.herokuapp.com/");
+// socket = io('http://ec2-18-215-242-151.compute-1.amazonaws.com')
+socket = io('http://localhost:3000')
 
 // React Navigation
 const StackNavigator = createStackNavigator(
   {
-    Welcome: Home,
-    SignUp: SignUp,
+    Welcome: {
+      screen: HomeWithSocket,
+      navigationOptions: {
+        header: null
+      },
+    },
+    SignUp: {
+      screen: SignUpWithSocket,
+      navigationOptions: {
+        headerTitle: 'Sign Up',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: 'black'
+        }
+      }
+    },
     Password: PasswordHelp
   },
   {
-    mode: 'card'
+    mode: 'card',
+    headerMode: 'screen'
   }
 );
 
@@ -35,7 +54,7 @@ const AppDrawerNavigator = createDrawerNavigator(
     drawerPosition: 'left',
     drawerBackgroundColor: 'darkgray',
     overlayColor: 'black',
-})
+  })
 
 // Main App: Lobby and Private Chat
 const SwipeableNavigator = createMaterialTopTabNavigator(
@@ -71,10 +90,11 @@ const AppContainer = createAppContainer(SwitchNavigator);
 
 // Main App
 export default class App extends Component {
-
   render() {
     return (
-      <AppContainer theme="dark" />
+      <SocketContext.Provider value={socket}>
+        <AppContainer />
+      </SocketContext.Provider>
     );
   }
 }
