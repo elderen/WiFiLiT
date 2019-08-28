@@ -1,6 +1,7 @@
 //import liraries
 import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
+import CustomDrawer from './CustomDrawer'
 import Authentication from './Authentication'
 import HomeWithSocket from './Home'
 import SignUpWithSocket from './SignUp'
@@ -44,22 +45,22 @@ const StackNavigator = createStackNavigator(
   }
 );
 
-// Main Lobby with active drawer
-const AppDrawerNavigator = createDrawerNavigator(
-  {
-    Lobby: Lobby,
-    Profile: Profile,
-    Setting: Setting
-  }, {
-    drawerPosition: 'left',
-    drawerBackgroundColor: 'darkgray',
-    overlayColor: 'black',
-  })
+const MyApp = createDrawerNavigator({
+   Lobby: {
+     screen: Lobby
+   },
+   Settings: {
+     screen: Setting
+   }
+},{
+  initialRouteName: 'Lobby',
+  contentComponent: CustomDrawer
+})
 
 // Main App: Lobby and Private Chat
-const SwipeableNavigator = createMaterialTopTabNavigator(
+const SwipeableNavigator =  createMaterialTopTabNavigator(
   {
-    Left: AppDrawerNavigator,
+    Left: MyApp,
     Right: PrivateChat,
   },
   {

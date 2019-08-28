@@ -20,7 +20,7 @@ class Home extends Component {
     this.props.socket.on('loginResult', async (loginResult) => {
       if (loginResult === "allow") {
         await AsyncStorage.setItem('isLoggedIn', this.state.username);
-        this.props.navigation.navigate('Lobby')
+        this.props.navigation.navigate('Left', {username: this.state.username})
       } else {
         Alert.alert(loginResult)
       }
