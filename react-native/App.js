@@ -46,14 +46,11 @@ const StackNavigator = createStackNavigator(
   }
 );
 
-const MyApp = createDrawerNavigator({
-  Lobby: {
-    screen: Lobby
+const MyApp = createDrawerNavigator(
+  {
+    Lobby: Lobby
   },
-  Settings: {
-    screen: Setting
-  }
-}, {
+  {
     initialRouteName: 'Lobby',
     contentComponent: CustomDrawer
   })
