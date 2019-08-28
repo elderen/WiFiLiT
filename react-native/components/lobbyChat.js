@@ -1,4 +1,3 @@
-window.navigator.userAgent = 'react-native';
 import React from 'react';
 import { YellowBox, StyleSheet, Text, TextInput, View, KeyboardAvoidingView } from 'react-native';
 import { NetworkInfo } from "react-native-network-info";
@@ -6,12 +5,6 @@ import NetInfo from "@react-native-community/netinfo";
 import TopMessage from './topMessage';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ScrollView } from "react-navigation";
-
-console.ignoredYellowBox = ['Remote debugger'];
-YellowBox.ignoreWarnings([
-  'Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?'
-]);
-
 
 export default class LobbyChat extends React.Component {
   state = {

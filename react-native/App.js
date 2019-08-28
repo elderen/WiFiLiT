@@ -1,3 +1,9 @@
+window.navigator.userAgent = 'react-native';
+console.ignoredYellowBox = ['Remote debugger'];
+YellowBox.ignoreWarnings([
+  'Unrecognized WebSocket connection option(s) `agent`, `perMessageDeflate`, `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`. Did you mean to put these under `headers`?'
+]);
+
 //import liraries
 import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer, createDrawerNavigator, createSwitchNavigator, createMaterialTopTabNavigator } from "react-navigation";
@@ -7,12 +13,10 @@ import HomeWithSocket from './Home'
 import SignUpWithSocket from './SignUp'
 import Lobby from './Lobby'
 import PasswordHelp from './PasswordHelp'
-import Profile from './Profile'
-import Setting from './Setting'
 import PrivateChat from './PrivateChat'
 import SocketContext from './socket-context'
 import io from 'socket.io-client/dist/socket.io';
-import { StatusBar } from 'react-native'
+import { YellowBox, StatusBar } from 'react-native'
 
 // Single Socket instance shared throughout app
 // socket = io("https://wich.herokuapp.com/");
