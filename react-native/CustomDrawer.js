@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import ImagePicker from 'react-native-image-picker'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import defaultPhoto from './images/defaultPhoto.jpg'
+import SocketContext from './socket-context'
 
 const options = {
   title: 'Dope Profile Pic',
@@ -12,7 +13,7 @@ const options = {
   chooseFromLibraryButtonTitle: 'Choose a LiT photo from Library',
 }
 
-export default class CustomDrawer extends Component {
+class MyDrawer extends Component {
   constructor(props) {
     super(props);
     this.state = ({
@@ -23,7 +24,6 @@ export default class CustomDrawer extends Component {
     this.changePhoto = this.changePhoto.bind(this)
     this.getUserName = this.getUserName.bind(this)
     this.getPhoto = this.getPhoto.bind(this)
-    this.sendPhoto = this.sendPhoto.bind(this)
     this.logOut = this.logOut.bind(this)
     this.getUserName()
   }
@@ -46,12 +46,8 @@ export default class CustomDrawer extends Component {
   getPhoto = () => {
     
   }
-  //sendProfilePhotoFromServer
-  sendPhoto = () => {
 
-  }
-
-  //allow user to either choose a photo from their phone album, or take a new picture
+  //allow user to either choose a photo from their phone album, or take
   changePhoto = () => {
     ImagePicker.showImagePicker(options, async (response) => {
       console.log('Response = ', response);
@@ -62,13 +58,17 @@ export default class CustomDrawer extends Component {
         console.log('ImagePicker Error: ', response.error);
       } else {
         if (response.uri) {
-          const source = { uri: response.uri };
+          // const source = { uri: response.uri };
 
           // You can also display the image using data:
-          // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+          const source = { uri: 'data:image/jpeg;base64,' + response.data, username: this.state.username };
           this.setState({
-            imageUri: source,
-            isLoaded: true
+            imageUri: source
+          },()=>{
+            this.props.socket.emit('postPhoto', source)
+            this.setState({
+              isLoaded: true
+            })
           })
 
         }
@@ -137,3 +137,11 @@ let styles = StyleSheet.create({
     fontSize: 30
   }
 })
+
+const CustomDrawer = props => (
+  <SocketContext.Consumer>
+    {socket => <MyDrawer navigation={props.navigation} socket={socket}/>}
+  </SocketContext.Consumer>
+);
+
+export default CustomDrawer;
