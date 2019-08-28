@@ -12,6 +12,7 @@ import Setting from './Setting'
 import PrivateChat from './PrivateChat'
 import SocketContext from './socket-context'
 import io from 'socket.io-client/dist/socket.io';
+import { StatusBar } from 'react-native'
 
 // Single Socket instance shared throughout app
 // socket = io("https://wich.herokuapp.com/");
@@ -46,19 +47,19 @@ const StackNavigator = createStackNavigator(
 );
 
 const MyApp = createDrawerNavigator({
-   Lobby: {
-     screen: Lobby
-   },
-   Settings: {
-     screen: Setting
-   }
-},{
-  initialRouteName: 'Lobby',
-  contentComponent: CustomDrawer
-})
+  Lobby: {
+    screen: Lobby
+  },
+  Settings: {
+    screen: Setting
+  }
+}, {
+    initialRouteName: 'Lobby',
+    contentComponent: CustomDrawer
+  })
 
 // Main App: Lobby and Private Chat
-const SwipeableNavigator =  createMaterialTopTabNavigator(
+const SwipeableNavigator = createMaterialTopTabNavigator(
   {
     Left: MyApp,
     Right: PrivateChat,
@@ -94,6 +95,7 @@ export default class App extends Component {
   render() {
     return (
       <SocketContext.Provider value={socket}>
+        <StatusBar hidden={true} />
         <AppContainer />
       </SocketContext.Provider>
     );
