@@ -33,6 +33,8 @@ class MyDrawer extends Component {
       let storedName = await AsyncStorage.getItem("isLoggedIn")
       this.setState({
         username: storedName
+      }, () => {
+        this.getPhoto()
       })
 
     } catch (err) {
@@ -44,7 +46,23 @@ class MyDrawer extends Component {
 
   //getProfilePhotoFromServer
   getPhoto = () => {
-    
+    socket.emit('retrievePhoto', this.state.username)
+    socket.on('retrievePhoto', (photo) => {
+      if (photo) {
+        let parsedPhoto = JSON.parse(photo)
+        this.setState({
+          imageUri: parsedPhoto
+        }, () => {
+          this.setState({
+            isLoaded: true
+          })
+        })
+      } else {
+        this.setState({
+          isLoaded: false
+        })
+      }
+    })
   }
 
   //allow user to either choose a photo from their phone album, or take
@@ -58,13 +76,13 @@ class MyDrawer extends Component {
         console.log('ImagePicker Error: ', response.error);
       } else {
         if (response.uri) {
-          // const source = { uri: response.uri };
+          // const source = { uri: response.uri, username: this.state.username  };
 
           // You can also display the image using data:
           const source = { uri: 'data:image/jpeg;base64,' + response.data, username: this.state.username };
           this.setState({
             imageUri: source
-          },()=>{
+          }, () => {
             this.props.socket.emit('postPhoto', source)
             this.setState({
               isLoaded: true
@@ -109,11 +127,11 @@ class MyDrawer extends Component {
           </Body>
         </Header>
         <Content style={{ backgroundColor: 'white' }}>
-          <Button full light onPress={() => { alert('one') }}>
+          <Button full light onPress={() => { alert('will change your username color') }}>
             <Text>Change Username Color</Text>
           </Button>
-          <Button full light onPress={() => { alert('two') }}>
-            <Text>Turn Invisible</Text>
+          <Button full light onPress={this.getPhoto}>
+            <Text>Get Photo</Text>
           </Button>
           <Button full light onPress={this.logOut}>
             <Text>Log Out</Text>
@@ -140,7 +158,7 @@ let styles = StyleSheet.create({
 
 const CustomDrawer = props => (
   <SocketContext.Consumer>
-    {socket => <MyDrawer navigation={props.navigation} socket={socket}/>}
+    {socket => <MyDrawer navigation={props.navigation} socket={socket} />}
   </SocketContext.Consumer>
 );
 
